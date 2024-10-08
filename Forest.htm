@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper</title>
+    <style>
+
+                strong {
+            color: green;
+        }
+
+                .process-step {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .process-step img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* Basic styles for the page */
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #2e2e2e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #1e1e1e;
+            padding: 20px;
+            position: fixed;
+        }
+
+        .sidebar img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #2b2b2b;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .sidebar a:hover {
+            background-color: #00ff00;
+            color: #1e1e1e;
+        }
+
+
+        .terminal-section {
+            color: #ffffff; 
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            width: 72%;
+            padding: 20px;
+            margin: 20px auto;
+            margin-left: 300px; /* Ensure space from sidebar */
+            margin-top: 20px; /* Add space from top */
+        }
+
+        /* Button styles */
+        /* Button styles */
+/* Button styles */
+.details-btn {
+    background-color: #2b2b2b;
+    color: #00ff00;
+    padding: 5px 5px; /* Keep the same height and width */
+    border: 2px solid #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 0 5px #00ff00;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border-radius: 5px; /* You can keep or remove this depending on your preference */
+    margin-top: 10px;
+    margin-right: 5px; /* Spacing between buttons */
+}
+
+
+
+        .details-btn:hover {
+            background-color: #00ff00;
+            color: #1e1e1e;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px; 
+        }
+        .modal-content {
+            background-color: #1e1e1e;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 90%; 
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            display: flex; /* Flexbox for layout */
+                max-height: 80vh; /* Limit the height */
+
+            overflow-y: auto; /* Enable scrolling */
+
+        }
+        .modal-content-1 {
+            background-color: #1e1e1e;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 90%; 
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            overflow-y: auto; /* Enable scrolling */
+                max-height: 80vh; /* Limit the height */
+
+
+
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+                #videoContainer {
+            flex: 1; /* Take up 1 part of the space */
+            margin-right: 20px; /* Space between video and content */
+        }
+        #contentContainer {
+            flex: 2; /* Take up 2 parts of the space */
+        }
+
+
+
+
+    .circle-container {
+        display: flex;
+        justify-content: left   ; /* Align the circles closer */
+        gap: 15px; /* Adjust spacing between the circles */
+        margin-top: 20px;
+    }
+
+    .circle-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none; /* Remove underline for links */
+    }
+
+    .circle-profile img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid #ffffff;
+        transition: transform 0.3s ease;
+    }
+
+    .circle-profile:hover img {
+        transform: scale(1.1); /* Enlarge image on hover */
+    }
+
+    .profile-caption {
+        color: #ffffff;
+        margin-top: 8px;
+        text-align: center;
+        font-size: 14px;
+        width: 100%;
+        padding: 0 5px;
+        word-wrap: break-word; /* Ensure long captions wrap */
+    }
+
+    .circle-profile:hover .profile-caption {
+        color: #ffcc00; /* Optional: Change caption color on hover */
+    }
+
+    
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <img src="img/Forest/paper1-1.png" alt="Profile Image"style="width: 100px;" >
+    <img src="img/Forest/paper1-2.webp" alt="Profile Image" style="width: 200px;">
+        <a href="#intro">Introduction</a>
+        <a href="#feature">Approach</a>
+        <a href="#team">Team Acknowledgment</a>
+
+
+    </div>
+    <div id="intro" class="terminal-section">
+
+        <h1>Introduction</h1>
+        
+    <p><strong>Objective:</strong> The objective was to develop a static tree and forest data structure.</p>
+
+    <p><strong>Background:</strong> The challenge arose during the design of a Simulink dependence tree for variables. We had previously encountered similar issues while traversing Simulink and constructing decision trees for AI problems. In those instances, we successfully addressed the challenges using traditional recursive algorithms.</p>
+
+    <p><strong>Solution:</strong> To enhance the traceability of the tree and provide a more flexible approach, we recognized the need for a static array-based tree representation. This required the development of algorithms to facilitate tree traversal and perform essential operations on the tree structure.</p>
+
+
+    </div>
+        <div id="feature" class="terminal-section">
+
+        <h1>Approach</h1>
+        <p>We began by asking ourselves: <strong>what is the minimal information</strong> required to <strong>reconstruct a tree</strong>? The answer we found was the <strong>number of children</strong> for each individual node. The concept is simple. For example, consider a tree diagram. If you know the <strong>sequence of node names</strong> and their <strong>corresponding child counts</strong>, you can recreate the entire tree.</p>
+      <img src="img/Forest/paper1-3.png" alt="Description of the image"  height="200">
+
+<p>Let’s illustrate: if the first node is <strong>‘A’</strong> with <strong>two children</strong>, you draw ‘A’ and place two empty nodes beneath it. The next node, <strong>‘B’</strong>, fills one of these empty spots, and if ‘B’ has <strong>three children</strong>, you add three more empty nodes below it. Following this process, the tree gradually takes shape until it’s fully recreated.</p>
+
+<p>We transformed this idea into <strong>Python code</strong> and began our journey. However, none of us had a <strong>computer science background</strong>, so we needed guidance from an expert. After reaching out to professors worldwide, we received a positive response from <strong>Prof. Adrian Marius Deaconu</strong>. He appreciated our idea and pointed out that while it was <strong>simple and fundamental</strong>, it had potential for broader <strong>applications</strong> and <strong>enhancements</strong>.</p>
+
+<p>Under his mentorship, we expanded our concept to encompass <strong>forest structures</strong> and explored detailed applications. Ultimately, this work led to the <strong>publication of our paper</strong>.</p>
+
+<p>For more details, have a look at the published paper <a href="https://www.mdpi.com/2227-7390/9/21/2650" target="_blank">here</a>.</p>
+
+
+    </div>
+
+<div id="team" class="terminal-section">
+<h1>Team Acknowledgment</h1>
+
+<p>This paper was born out of self-motivation, and I was fortunate to collaborate with my colleagues and close friends, <strong>Shristi Kumari</strong> and <strong>Vaishnavi Patekar</strong>, who contributed to both the project and the publication. Together, we approached several professors for mentorship and guidance. We were incredibly fortunate to have <strong>Prof. Adrian Marius Deaconu</strong> recognize the potential of our idea. He patiently guided us through the process, helping us expand and refine our work. We are also deeply grateful to him for securing the funding for our publication from the university, which made this achievement possible.</p>
+
+
+    <div class="circle-container">
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/shristi-kumari/" target="_blank" class="circle-profile">
+            <img src="img/Forest/SK.jpeg" alt="Profile 1">
+            <div class="profile-caption">   Shristi Kumari</div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/vaishnavi-patekar/" target="_blank" class="circle-profile">
+            <img src="img/Forest/VP.jpeg" alt="Profile 1">
+            <div class="profile-caption">Vaishnavi Patekar</div>
+        </a>
+
+        <a href="https://www.unitbv.ro/contact/comunitatea-unitbv/2009-deaconu-adrian-marius.html" target="_blank" class="circle-profile">
+            <img src="img/Forest/AMD.jpg" alt="Profile 1">
+            <div class="profile-caption">Dr. Adrian Marius Deaconu</div>
+        </a>
+
+
+    </div>
+
+
+    </div>
+
+    
+
+
+
+    <script>
+        // Get all modals
+        const modals = [
+            document.getElementById("myModal1"),
+            document.getElementById("myModal2"),
+            document.getElementById("myModal3"),
+            //document.getElementById("myModal4"),
+            //document.getElementById("myModal5"),
+            //document.getElementById("myModal6"),
+            //document.getElementById("myModal7"),
+            // document.getElementById("myModal8"),
+        ];
+
+        // Get all buttons
+        const buttons = [
+            document.getElementById("myBtn1"),
+            document.getElementById("myBtn2"),
+            document.getElementById("myBtn3"),
+            //document.getElementById("myBtn4"),
+            //document.getElementById("myBtn5"),
+            //document.getElementById("myBtn6"),
+            //document.getElementById("myBtn7"),
+            //document.getElementById("myBtn8"),
+        ];
+
+        // Get the <span> elements that close the modals
+        const spans = document.getElementsByClassName("close");
+
+        // Add click event to each button to open the corresponding modal
+        buttons.forEach((button, index) => {
+            button.onclick = function() {
+                modals[index].style.display = "block";
+            }
+        });
+
+        // When the user clicks on <span> (x), close the modals and stop the video
+        Array.from(spans).forEach((span, index) => {
+            span.onclick = function() {
+                modals[index].style.display = "none";
+                const videoFrames = modals[index].querySelectorAll('iframe');
+                videoFrames.forEach(video => {
+                    video.src = video.src;  // Reset the video by re-assigning the src attribute
+                });
+            }
+        });
+
+        // When the user clicks anywhere outside of the modal, close it and stop the video
+        window.onclick = function(event) {
+            modals.forEach((modal, index) => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    const videoFrames = modal.querySelectorAll('iframe');
+                    videoFrames.forEach(video => {
+                        video.src = video.src;  // Reset the video
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
