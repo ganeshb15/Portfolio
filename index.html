@@ -101,13 +101,15 @@
             position: fixed;
         }
 
-        .sidebar img {
-            display: block;
-            width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-            border-radius: 10px;
-        }
+.sidebar img {
+    display: block;
+    width: 150px; /* Set a fixed width */
+    height: 150px; /* Set height equal to width */
+    margin-bottom: 20px;
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image is properly cropped inside the circle */
+}
+
 
         .sidebar a {
             display: block;
@@ -436,7 +438,7 @@ body {
 </head>
 <body>
     <div class="sidebar">
-        <img src="path-to-your-image.jpg" alt="Profile Image">
+        <img src="img/profile.jpeg" alt="Profile Image">
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Projects</a>
@@ -593,8 +595,8 @@ body {
                 <p><strong>Duration:</strong> 1 Year</p>
             </div>
             <div class="button-container">
-                <a href="#" class="retro-button">Details</a>
-                <a href="#" class="retro-button">GitHub</a>
+                    <button class="open-btn retro-button" onclick="openPopup('popup9')">Details</button>
+                    <button class="open-btn retro-button" onclick="openPopup('popup10')">Paper</button>
             </div>
         </div>
     </div>
@@ -1047,7 +1049,20 @@ LinuxWorld Informatics Pvt Ltd Jaipur
         </div>
     </div>
 
+            <!-- Popup 2 -->
+    <div class="popup" id="popup9">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup('popup9')">Close</button>
+            <iframe src="Forest.htm"></iframe>
+        </div>
+    </div>
 
+        <div class="popup" id="popup10">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup('popup10')">Close</button>
+            <iframe src="img/Forest/mathematics-09-02650-v3.pdf"></iframe>
+        </div>
+    </div>
         <!-- Popup -->
     <div class="overlay" id="overlay"></div>
     <div class="popup" id="popup">
