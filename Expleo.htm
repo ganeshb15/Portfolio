@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expleo</title>
+    <style>
+
+                strong {
+            color: green;
+        }
+
+                .process-step {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .process-step img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* Basic styles for the page */
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #2e2e2e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #1e1e1e;
+            padding: 20px;
+            position: fixed;
+        }
+
+        .sidebar img {
+            display: block;
+            width: 30%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #2b2b2b;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .sidebar a:hover {
+            background-color: #00ff00;
+            color: #1e1e1e;
+        }
+
+
+        .terminal-section {
+            color: #ffffff; 
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            width: 72%;
+            padding: 20px;
+            margin: 20px auto;
+            margin-left: 300px; /* Ensure space from sidebar */
+            margin-top: 20px; /* Add space from top */
+        }
+
+        /* Button styles */
+        /* Button styles */
+/* Button styles */
+.details-btn {
+    background-color: #2b2b2b;
+    color: #00ff00;
+    padding: 5px 5px; /* Keep the same height and width */
+    border: 2px solid #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 0 5px #00ff00;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border-radius: 5px; /* You can keep or remove this depending on your preference */
+    margin-top: 10px;
+    margin-right: 5px; /* Spacing between buttons */
+}
+
+
+
+        .details-btn:hover {
+            background-color: #00ff00;
+            color: #1e1e1e;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px; 
+        }
+        .modal-content {
+            background-color: #1e1e1e;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 90%; 
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            display: flex; /* Flexbox for layout */
+                max-height: 80vh; /* Limit the height */
+
+            overflow-y: auto; /* Enable scrolling */
+
+        }
+        .modal-content-1 {
+            background-color: #1e1e1e;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 90%; 
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            overflow-y: auto; /* Enable scrolling */
+                max-height: 80vh; /* Limit the height */
+
+
+
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+                #videoContainer {
+            flex: 1; /* Take up 1 part of the space */
+            margin-right: 20px; /* Space between video and content */
+        }
+        #contentContainer {
+            flex: 2; /* Take up 2 parts of the space */
+        }
+
+
+
+
+    .circle-container {
+        display: flex;
+        justify-content: left   ; /* Align the circles closer */
+        gap: 15px; /* Adjust spacing between the circles */
+        margin-top: 20px;
+    }
+
+    .circle-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none; /* Remove underline for links */
+    }
+
+    .circle-profile img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid #ffffff;
+        transition: transform 0.3s ease;
+    }
+
+    .circle-profile:hover img {
+        transform: scale(1.1); /* Enlarge image on hover */
+    }
+
+    .profile-caption {
+        color: #ffffff;
+        margin-top: 8px;
+        text-align: center;
+        font-size: 14px;
+        width: 100%;
+        padding: 0 5px;
+        word-wrap: break-word; /* Ensure long captions wrap */
+    }
+
+    .circle-profile:hover .profile-caption {
+        color: #ffcc00; /* Optional: Change caption color on hover */
+    }
+
+            .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .left-image, .right-images {
+            flex: 1;
+        }
+        .right-images {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Space between the two right images */
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+        .right-images img {
+            height: 49%; /* Adjust to fit both images properly */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <img src="img/Expleo.jpeg" alt="Profile Image" >
+
+
+        <a href="#intro">Introduction</a>
+        <a href="#feature">Feature</a>
+        <a href="#chain">Toolchain Process</a>
+        <a href="#learning">Learning Journey</a>
+        <a href="#ino">Leadership</a>
+        <a href="#team">Team Acknowledgment</a>
+        <br>
+        <a href="#">Client</a>
+        <img src="img/Renault.png" alt="Profile Image" >
+        <img src="img/Nissan.png" alt="Profile Image" >
+
+    </div>
+    <div id="intro" class="terminal-section">
+
+        <h1>Introduction</h1>
+        <p>I worked at Expleo for a brief period, where I gained hands-on experience in Simulink design and developed a deeper understanding of Stateflow. I also managed CAN variables and their flow while interpreting vehicle requirements in DOORS, particularly for Body Control Unit (BCU) features. Although confidentiality restricts sharing specific details, I can provide relevant insights into my work that highlight my skills and expertise. Below, I will outline a few feature details and the workflows I worked on during my time with the client Renault-Nissan.</p>
+
+    </div>
+        <div id="feature" class="terminal-section">
+
+        <h1>Feature</h1>
+        I primarily worked on User Authentication for the Hands-Free Module (HFM) and the Body Control Module (BCM), focusing on automotive body features rather than mechanical components. These features were centered around functionality.
+
+<h2>User Authentication System</h2>  
+This module was responsible for unlocking or locking the car based on various authentication methods. While it may seem straightforward, its complexity increases with different scenarios, such as multiple authentication options—physical keys, transponders, and mobile apps for rental vehicles. Each method requires careful handling of conditions and encryption. A key aspect of this work involved preventing relay attacks <button class="details-btn" id="myBtn1">Link</button>, ensuring the system's integrity against unauthorized access. This was primarily designed using Stateflow in a Simulink model.
+
+<h2>Driver Input Management</h2>  
+This module managed the transition between manual and automatic driving modes in certain vehicles, such as sports mode, eco mode, and normal mode. It included state definitions and transitions based on various conditions. I was responsible for the maintenance and debugging of this module as part of the development process.
+<br>
+<br>
+Both features were integral to the Renault-Nissan architecture and encompassed various car lines.
+
+    </div>
+
+
+
+    <!-- Modals for each button -->
+    <div id="myModal1" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+             <div id="videoContainer">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/D_3lgxMwrWI?si=Qj-1PghpZnEKswlB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    <div id="contentContainer">
+        Relay attacks in automotive security are a type of unauthorized access where an attacker intercepts and relays signals between a key fob and a vehicle. The process involves the attacker capturing the signal from the key fob—often located inside the owner's home—using one device, and then transmitting that signal to the vehicle with another device, tricking it into believing the key fob is nearby. This allows the attacker to unlock and start the car without the owner’s knowledge. To mitigate the risk of relay attacks, vehicle owners can use signal-blocking pouches for their key fobs and manufacturers can implement enhanced security features in vehicles.
+    </div>
+
+        </div>
+    </div>
+
+   
+
+
+
+    <div id="chain" class="terminal-section">
+
+       <h2>Toolchain Process Flow</h2>
+
+<div class="process-step">
+    <img src="img/EXPEO/doors_logo.png" alt="Requirements Icon">
+    <div>
+        <strong>1. Requirement Analysis via DOORS and Error Ticket Review</strong><br>
+        <em>Objective:</em> Analyze requirements in DOORS and investigate error tickets from SIL and hardware testing teams.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Receive requirement details in DOORS.</li>
+            <li>Analyze error tickets from the SIL or hardware testing teams.</li>
+            <li>Assess whether software changes are feasible or if another team is responsible.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="process-step">
+    <img src="img/EXPEO/Simulink.png" alt="Development Icon">
+    <div>
+        <strong>2. Development Phase and Team Communication</strong><br>
+        <em>Objective:</em> Implement changes in the model based on requirement analysis.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Modify the model based on the requirements.</li>
+            <li>Understand and explain the changes to the team lead.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="process-step">
+    <img src="img/EXPEO/MXAM.png" alt="MXAM Icon">
+    <div>
+        <strong>3. MAAB Check Based on MXAM Rules</strong><br>
+        <em>Objective:</em> Ensure the code architecture complies with MAAB guidelines using MXAM.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Run MXAM checks on the modified model.</li>
+            <li>Ensure compliance with MAAB rules.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="process-step">
+    <img src="img/EXPEO/embeded-c.png" alt="Embedded Coder Icon">
+    <div>
+        <strong>4. Embedded Code Development and GUI Integration</strong><br>
+        <em>Objective:</em> Develop embedded C code and create an s-function for GUI integration.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Generate embedded C code.</li>
+            <li>Create an s-function for model integration.</li>
+            <li>Develop a standalone GUI for feature functionality and testing.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="process-step">
+    <img src="img/EXPEO/GUI.png" alt="Testing Icon">
+    <div>
+        <strong>5. Model and GUI Verification by MIL Testing Team</strong><br>
+        <em>Objective:</em> Send the updated model and GUI to the architect and MIL testing team for verification.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Send the model and GUI for functional verification.</li>
+            <li>Receive feedback from the architect and testing team.</li>
+            <li>Make necessary rectifications based on feedback.</li>
+        </ul>
+    </div>
+</div>
+
+    </div>
+
+
+
+    <div id="learning" class="terminal-section">
+
+        <h1>My Experience and Learning Journey</h1>
+ 
+
+<p>
+    This role was a <strong>pivotal point in my development</strong>, where I gained an <strong>in-depth understanding of Stateflow design</strong> and development, along with the entire flow from <strong>requirements to release</strong>. I developed a <strong>top-level perspective of vehicle functionality</strong>, learning <strong>Simulink Design</strong> and <strong>Embedded C for code generation</strong>. I also worked extensively on <strong>feature authentication</strong>, understanding how it operates through state management, and explored <strong>security challenges</strong>, including relay attacks, which were particularly interesting.
+</p>
+
+<p>
+    As part of the toolchain, I enhanced my knowledge of <strong>DOORS and MXAM</strong>, approaching them with a more fundamental understanding. This role also provided my first <strong>direct interaction with both the client and the feature architects</strong>, enabling me to work closely on feature integration.
+</p>
+
+<p>
+    I maintained a track record of <strong>delivering zero-defect, zero-delay releases</strong>. Additionally, I took on a <strong>leadership role</strong>, organizing and assigning tasks, while training trainees for two months. This opportunity allowed me to <strong>grow my leadership and organizational skills</strong>, which I found highly rewarding alongside my release activities.
+</p>
+
+    </div>
+
+
+
+
+     <div id="ino" class="terminal-section">
+
+   
+    <h2>Leadership in Simulink and Automotive Concepts Training</h2>
+
+    <p>
+        During my tenure at Expleo, I led and organized a training program aimed at freshers, focusing on <strong>Simulink</strong> and <strong>automotive concepts</strong>. Alongside a few colleagues, I ensured that participants—some with no prior experience in MATLAB or Simulink—were equipped with <strong>project-relevant skills</strong>. The training was structured with <strong>testing</strong> and <strong>interview phases</strong> for clarity and rectification, helping trainees solidify their understanding.
+    </p>
+
+    <p>
+        As this was a <strong>pilot project</strong> with no pre-defined structure, I took charge of organizing and leading the initiative, which significantly improved my <strong>confidence</strong> and <strong>leadership experience</strong>. By the end, all trainees met expectations and demonstrated good results. This was accomplished alongside my regular release activities, further honing my ability to balance multiple responsibilities effectively.
+    </p>
+
+
+
+    </div>
+<div id="team" class="terminal-section">
+<h1>Team Acknowledgment</h1>
+
+        <p>Working at Expleo was a friendly and rewarding experience. Even though it wasn't a startup, I was part of a pilot project that had a flexible structure similar to one. I am grateful to have worked under the leadership of <strong>Vivekkumar Patel</strong>, who was not only my manager but also the technical lead. He patiently guided me through everything, from modeling to understanding complex features, making the learning process both encouraging and insightful.</p>
+
+ 
+    <div class="circle-container">
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/vivekkumar-patel-54247796/" target="_blank" class="circle-profile">
+            <img src="img/EXPEO/expleo-1.jpeg" alt="Profile 1">
+            <div class="profile-caption">Vivekkumar Patel</div>
+        </a>
+
+    </div>
+    <p>Though we worked independently on different features, we fostered a collaborative environment where we exchanged knowledge and discussed technical challenges during team learning sessions. These meetings were instrumental in fostering a supportive team culture, especially for the freshers involved in Simulink training.</p>
+    
+    <p>I had the privilege of collaborating with <strong>Neha Choudhary</strong>, <strong>Karishma Kokare</strong>, and <strong>Anjana Satheesh</strong>. Our discussions and problem-solving helped us grow as a team, and working closely with <strong>Neha Choudhary</strong> on similar features allowed us to explore new ideas together under <strong>Vivekkumar Patel</strong>’s guidance on the Body Control Unit.</p>
+
+    <div class="circle-container">
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/neha-choudhary-75b78a136/" target="_blank" class="circle-profile">
+            <img src="img/EXPEO/expleo-2.jpeg" alt="Profile 1">
+            <div class="profile-caption">Neha Choudhary</div>
+        </a>
+        
+        <!-- Profile 2 -->
+        <a href="https://www.linkedin.com/in/karishma-kokare-013b29105/" target="_blank" class="circle-profile">
+            <img src="img/EXPEO/expleo-3.jpeg" alt="Profile 2">
+            <div class="profile-caption">Karishma Kokare</div>
+        </a>
+                <!-- Profile 2 -->
+        <a href="https://www.linkedin.com/in/anjana-satheesh-8782a7116/" target="_blank" class="circle-profile">
+            <img src="img/EXPEO/expleo-4.jpeg" alt="Profile 2">
+            <div class="profile-caption">Anjana Satheesh</div>
+        </a>
+        
+
+    </div>
+
+    </div>
+
+
+
+    <script>
+        // Get all modals
+        const modals = [
+            document.getElementById("myModal1"),
+            //document.getElementById("myModal2"),
+            //document.getElementById("myModal3"),
+            //document.getElementById("myModal4"),
+            //document.getElementById("myModal5"),
+            //document.getElementById("myModal6"),
+            //document.getElementById("myModal7"),
+             //document.getElementById("myModal8"),
+        ];
+
+        // Get all buttons
+        const buttons = [
+            document.getElementById("myBtn1"),
+            //document.getElementById("myBtn2"),
+            //document.getElementById("myBtn3"),
+            //document.getElementById("myBtn4"),
+            //document.getElementById("myBtn5"),
+            //document.getElementById("myBtn6"),
+            //document.getElementById("myBtn7"),
+            //document.getElementById("myBtn8"),
+        ];
+
+        // Get the <span> elements that close the modals
+        const spans = document.getElementsByClassName("close");
+
+        // Add click event to each button to open the corresponding modal
+        buttons.forEach((button, index) => {
+            button.onclick = function() {
+                modals[index].style.display = "block";
+            }
+        });
+
+        // When the user clicks on <span> (x), close the modals and stop the video
+        Array.from(spans).forEach((span, index) => {
+            span.onclick = function() {
+                modals[index].style.display = "none";
+                const videoFrames = modals[index].querySelectorAll('iframe');
+                videoFrames.forEach(video => {
+                    video.src = video.src;  // Reset the video by re-assigning the src attribute
+                });
+            }
+        });
+
+        // When the user clicks anywhere outside of the modal, close it and stop the video
+        window.onclick = function(event) {
+            modals.forEach((modal, index) => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    const videoFrames = modal.querySelectorAll('iframe');
+                    videoFrames.forEach(video => {
+                        video.src = video.src;  // Reset the video
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

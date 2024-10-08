@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IISc</title>
+    <style>
+
+                strong {
+            color: green;
+        }
+
+                .process-step {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .process-step img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* Basic styles for the page */
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #2e2e2e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #1e1e1e;
+            padding: 20px;
+            position: fixed;
+        }
+
+        .sidebar img {
+            display: block;
+            width: 30%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #2b2b2b;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .sidebar a:hover {
+            background-color: #00ff00;
+            color: #1e1e1e;
+        }
+
+
+        .terminal-section {
+            color: #ffffff; 
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            width: 72%;
+            padding: 20px;
+            margin: 20px auto;
+            margin-left: 300px; /* Ensure space from sidebar */
+            margin-top: 20px; /* Add space from top */
+        }
+
+        /* Button styles */
+        /* Button styles */
+/* Button styles */
+.details-btn {
+    background-color: #2b2b2b;
+    color: #00ff00;
+    padding: 5px 5px; /* Keep the same height and width */
+    border: 2px solid #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 0 5px #00ff00;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border-radius: 5px; /* You can keep or remove this depending on your preference */
+    margin-top: 10px;
+    margin-right: 5px; /* Spacing between buttons */
+}
+
+
+
+        .details-btn:hover {
+            background-color: #00ff00;
+            color: #1e1e1e;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px; 
+        }
+        .modal-content {
+            background-color: #1e1e1e;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 90%; 
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            display: flex; /* Flexbox for layout */
+                max-height: 80vh; /* Limit the height */
+
+            overflow-y: auto; /* Enable scrolling */
+
+        }
+        .modal-content-1 {
+            background-color: #1e1e1e;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 90%; 
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            overflow-y: auto; /* Enable scrolling */
+                max-height: 80vh; /* Limit the height */
+
+
+
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+                #videoContainer {
+            flex: 1; /* Take up 1 part of the space */
+            margin-right: 20px; /* Space between video and content */
+        }
+        #contentContainer {
+            flex: 2; /* Take up 2 parts of the space */
+        }
+
+
+
+
+    .circle-container {
+        display: flex;
+        justify-content: left   ; /* Align the circles closer */
+        gap: 15px; /* Adjust spacing between the circles */
+        margin-top: 20px;
+    }
+
+    .circle-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none; /* Remove underline for links */
+    }
+
+    .circle-profile img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid #ffffff;
+        transition: transform 0.3s ease;
+    }
+
+    .circle-profile:hover img {
+        transform: scale(1.1); /* Enlarge image on hover */
+    }
+
+    .profile-caption {
+        color: #ffffff;
+        margin-top: 8px;
+        text-align: center;
+        font-size: 14px;
+        width: 100%;
+        padding: 0 5px;
+        word-wrap: break-word; /* Ensure long captions wrap */
+    }
+
+    .circle-profile:hover .profile-caption {
+        color: #ffcc00; /* Optional: Change caption color on hover */
+    }
+
+    
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <img src="img/images.png" alt="Profile Image" >
+        <a href="#intro">Introduction</a>
+        <a href="#feature">Internship Experience</a>
+        <a href="#chain">My Learning Experience</a>
+        <a href="#learning">Proof of Work</a>
+        <a href="#team">Team Acknowledgment</a>
+
+    </div>
+    <div id="intro" class="terminal-section">
+
+        <h1>Introduction</h1>
+  <p>
+    As part of my B.Tech final year, I had the privilege of working as a <strong>Research Intern</strong> at IISc under the guidance of <strong><a href="https://iiscprofiles.irins.org/profile/3735" target="_blank">Prof T.V. Sreenivas</a></strong>. Although the internship was officially for one semester (six months), I continued the project for nearly a year to achieve conclusive results in this research endeavor. This opportunity was invaluable as it was my first research-based experience, allowing me to delve deeply into the field of <strong>audio signal processing</strong> and develop a strong foundation in <strong>research methodologies</strong>.
+</p>
+<p>
+    Initially, I assisted a Master's student, <strong>Omkar Sawant</strong>, on a project titled <strong><a href="https://ieeexplore.ieee.org/abstract/document/8724424" target="_blank">'Enhanced Directional Sensitivity using Acoustic Dish Reflector'</a></strong>, which has since been published as a paper. Due to my contributions and commitment, I was later entrusted with an independent project that focused on a <strong>rotating parabolic reflector</strong> and its acoustic significance, particularly examining how speed and distance affect its performance. I also developed an <strong>algorithm for passive signal localization</strong>, which avoided the need for a complex microphone array setup.
+</p>
+<p>
+    Since this research is publicly available, you can explore the project's details in the published paper, which contains comprehensive information about the findings and methodologies.
+</p>
+    
+
+    </div>
+        <div id="feature" class="terminal-section">
+
+        <h1>Internship Experience</h1>
+        <p>During the internship, I initially worked on <strong>labeling audio files</strong> using <strong>Audacity software</strong> and a <strong>Python script</strong> to organize the labels. I then transitioned to the <strong>hardware setup</strong>, focusing on the <strong>mechanical construction</strong> and <strong>rotation</strong> of the <strong>parabolic reflector</strong>. This involved <strong>calibrating</strong> the system for a <strong>flat frequency response</strong> and analyzing the <strong>frequency response</strong> of the coupled <strong>microphone</strong> and <strong>speaker</strong>, as well as understanding how the parabolic reflector influenced these responses.</p>
+
+<p>Further analysis examined the <strong>structural impact</strong> and <strong>material properties</strong> of the reflector. In subsequent stages, I addressed <strong>motor noise reduction</strong> and developed <strong>algorithms</strong> for <strong>sound classification</strong> in an open acoustic environment. The setup was based on a <strong>server-driven system</strong> using <strong>Raspberry Pi</strong>, <strong>motor actuators</strong>, and extensive <strong>data collection</strong> over several months, including overnight sessions. Managing <strong>large datasets</strong> became a key challenge.</p>
+
+<p>I also worked on both <strong>manual</strong> and <strong>automated data cleaning</strong> for the audio files. Additionally, I developed <strong>software algorithms</strong> for classifying <strong>background</strong> and <strong>event noise</strong>, experimenting with models such as <strong><a href="https://web.stanford.edu/~jurafsky/slp3/A.pdf" target="_blank"> Hidden Markov Models (HMM)</a></strong>, <strong> <a href="https://scikit-learn.org/stable/modules/mixture.html" target="_blank"> Gaussian Mixture Models (GMM)</a></strong>, and <strong><a href="https://www.isca-archive.org/interspeech_2013/hasan13_interspeech.pdf" target="_blank">Universal Background Models (UBM)</a></strong>. This led to the creation of a <strong>sound classification</strong> and <strong>localization algorithm</strong>.</p>
+
+<p>Details of this work were later <strong>published</strong> under the supervision of <strong>Dr. Anirban Bhowmick</strong>, who was a postdoc at the time under <strong>Prof T.V. Sreenivas</strong>.</p>
+
+    </div>
+
+
+
+
+
+
+
+
+    <div id="chain" class="terminal-section">
+
+<h2>My Learning Experience</h2>
+    <p>I gained significant insights from the <strong>research setup</strong> and learned about the workings of research and how to initiate a project similar to this one. <strong>Technically</strong>, I developed my skills in both the <strong>hardware aspects</strong> of embedded systems and <strong>server setup</strong>, including integrating a <strong>Raspberry Pi</strong> and using a <strong>stepper motor</strong> for precise angle adjustments. I also learned about selecting drivers for smooth transitions and discovering methods to eliminate <strong>audio channel noise</strong> in the system.</p>
+
+    <p>This experience involved many <strong>experimental aspects</strong>, such as mechanical setup, readings, and calibration. Alongside this, I deepened my understanding of <strong>signal processing</strong>, particularly in <strong>audio signal processing</strong>.</p>
+
+    
+
+    </div>
+
+    <div id="learning" class="terminal-section">
+
+<h2>Proof of Work</h2>
+    <p>As this was part of my <strong>B.Tech project</strong>, I have documentation from my university, as well as a letter from <strong>Prof T.V. Sreenivas</strong>, both of which validate my work at <strong>IISc Bangalore</strong> during my internship. Additionally, my involvement in the publication of a <strong>research paper</strong> further corroborates the successful outcomes of this project.</p>
+  <br>  
+1. Internship Completion Letter<button class="details-btn" id="myBtn1">Link</button>
+<br>
+2. Acceptance Letter for Joining
+<button class="details-btn" id="myBtn2">Link</button>
+<br>
+<br>
+3. Conference Paper Publication
+<a href="https://link.springer.com/chapter/10.1007/978-981-16-0749-3_44" target="_blank" class="details-btn" id="myBtn3">Link</a>
+<br>
+
+    </div>
+
+
+         <div id="myModal1" class="modal">
+        <div class="modal-content-1">
+            <span class="close">&times;</span>
+    <img src="img/IISC/iisc-1.png" alt="Vehicle Requirement Icon">
+
+    
+        </div>
+    </div>
+         <div id="myModal2" class="modal">
+        <div class="modal-content-1">
+            <span class="close">&times;</span>
+    <img src="img/IISC/iisc-2.png" alt="Vehicle Requirement Icon" width="500">
+
+    
+        </div>
+    </div>
+ 
+<div id="team" class="terminal-section">
+<h1>Team Acknowledgment</h1>
+
+<h3>Guidance from Prof T.V. Sreenivas</h3>
+    <p>I began my journey under the guidance of <strong>Prof T.V. Sreenivas.</strong>, who fostered a disciplined and structured environment. This atmosphere was crucial for maintaining focus and clarity on the required research. The experience I gained here at <strong>IISc Bangalore</strong> has been invaluable, instilling in me the motivation for self-directed research and publication. I am immensely grateful to Prof T.V. Sreenivas. for his support and mentorship.</p>
+
+    <div class="circle-container">
+        <!-- Profile 1 -->
+        <a href="https://iiscprofiles.irins.org/profile/3735" target="_blank" class="circle-profile">
+            <img src="img/IISC/iisc-1.jpg" alt="Profile 1">
+            <div class="profile-caption">Prof T.V. Sreenivas</div>
+        </a>
+
+    </div>
+
+    <h3>Collaboration with Dr. Anirban Bhowmick</h3>
+    <img src="img/IISC/iisc-7.png" alt="Profile 1" width="400">
+    <p>Working closely with <strong>Dr. Anirban Bhowmick</strong>, who was a postdoc at the time, was an amazing opportunity. His knowledge and guidance throughout the research project significantly enriched my learning experience. Additionally, I received substantial help from other members of the team, including <strong>Arti</strong>, <strong>Shrikant</strong>, and <strong>Omkar Savant</strong>.</p>
+    <div class="circle-container">
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/dr-anirban-bhowmick-8b3a4217/" target="_blank" class="circle-profile">
+            <img src="img/IISC/iisc-2.jpg" alt="Profile 1">
+            <div class="profile-caption">Dr. Anirban Bhowmick</div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/arthi-s-878aa1220/" target="_blank" class="circle-profile">
+            <img src="img/IISC/iisc-5.jpg" alt="Profile 1">
+            <div class="profile-caption">Arthi S</div>
+        </a>
+        <a href="https://www.linkedin.com/in/srikanth-raj-chetupalli-27446b193/" target="_blank" class="circle-profile">
+            <img src="img/IISC/iisc-4.jpg" alt="Profile 1">
+            <div class="profile-caption">Srikanth Raj Chetupalli</div>
+        </a>
+
+    </div>
+
+    <h3>Supportive Colleagues</h3>
+    <p>I was fortunate to collaborate with several supportive and friendly colleagues who assisted with experiments, exchanged ideas, and helped resolve bugs. Their camaraderie made the entire experience enjoyable. Notable mentions include <strong>Meghna Ranjit</strong> and <strong>Sangeeth Geetha Jayaprakash</strong>, whose contributions were greatly appreciated.</p>
+
+    <div class="circle-container">
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/sangeethjayaprakash/" target="_blank" class="circle-profile">
+            <img src="img/IISC/iisc-3.jpg" alt="Profile 1">
+            <div class="profile-caption">Sangeeth Geetha Jayaprakash</div>
+        </a>
+
+        <a href="https://ieeexplore.ieee.org/author/37089180695" target="_blank" class="circle-profile">
+            <img src="img/IISC/iisc-6.png" alt="Profile 1">
+            <div class="profile-caption">Meghna Ranjit</div>
+        </a>
+
+
+    </div>
+
+
+    </div>
+
+    <script>
+        // Get all modals
+        const modals = [
+            document.getElementById("myModal1"),
+            document.getElementById("myModal2"),
+            document.getElementById("myModal3"),
+            //document.getElementById("myModal4"),
+            //document.getElementById("myModal5"),
+            //document.getElementById("myModal6"),
+            //document.getElementById("myModal7"),
+            // document.getElementById("myModal8"),
+        ];
+
+        // Get all buttons
+        const buttons = [
+            document.getElementById("myBtn1"),
+            document.getElementById("myBtn2"),
+            document.getElementById("myBtn3"),
+            //document.getElementById("myBtn4"),
+            //document.getElementById("myBtn5"),
+            //document.getElementById("myBtn6"),
+            //document.getElementById("myBtn7"),
+            //document.getElementById("myBtn8"),
+        ];
+
+        // Get the <span> elements that close the modals
+        const spans = document.getElementsByClassName("close");
+
+        // Add click event to each button to open the corresponding modal
+        buttons.forEach((button, index) => {
+            button.onclick = function() {
+                modals[index].style.display = "block";
+            }
+        });
+
+        // When the user clicks on <span> (x), close the modals and stop the video
+        Array.from(spans).forEach((span, index) => {
+            span.onclick = function() {
+                modals[index].style.display = "none";
+                const videoFrames = modals[index].querySelectorAll('iframe');
+                videoFrames.forEach(video => {
+                    video.src = video.src;  // Reset the video by re-assigning the src attribute
+                });
+            }
+        });
+
+        // When the user clicks anywhere outside of the modal, close it and stop the video
+        window.onclick = function(event) {
+            modals.forEach((modal, index) => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    const videoFrames = modal.querySelectorAll('iframe');
+                    videoFrames.forEach(video => {
+                        video.src = video.src;  // Reset the video
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPIT</title>
+    <style>
+
+                strong {
+            color: green;
+        }
+
+                .process-step {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .process-step img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* Basic styles for the page */
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #2e2e2e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #1e1e1e;
+            padding: 20px;
+            position: fixed;
+        }
+
+        .sidebar img {
+            display: block;
+            width: 30%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #2b2b2b;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .sidebar a:hover {
+            background-color: #00ff00;
+            color: #1e1e1e;
+        }
+
+
+        .terminal-section {
+            color: #ffffff; 
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            width: 72%;
+            padding: 20px;
+            margin: 20px auto;
+            margin-left: 300px; /* Ensure space from sidebar */
+            margin-top: 20px; /* Add space from top */
+        }
+
+        /* Button styles */
+        /* Button styles */
+/* Button styles */
+.details-btn {
+    background-color: #2b2b2b;
+    color: #00ff00;
+    padding: 5px 5px; /* Keep the same height and width */
+    border: 2px solid #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 0 5px #00ff00;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border-radius: 5px; /* You can keep or remove this depending on your preference */
+    margin-top: 10px;
+    margin-right: 5px; /* Spacing between buttons */
+}
+
+
+
+        .details-btn:hover {
+            background-color: #00ff00;
+            color: #1e1e1e;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px; 
+        }
+        .modal-content {
+            background-color: #1e1e1e;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 90%; 
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            display: flex; /* Flexbox for layout */
+                max-height: 80vh; /* Limit the height */
+
+            overflow-y: auto; /* Enable scrolling */
+
+        }
+        .modal-content-1 {
+            background-color: #1e1e1e;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 90%; 
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            overflow-y: auto; /* Enable scrolling */
+                max-height: 80vh; /* Limit the height */
+
+
+
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+                #videoContainer {
+            flex: 1; /* Take up 1 part of the space */
+            margin-right: 20px; /* Space between video and content */
+        }
+        #contentContainer {
+            flex: 2; /* Take up 2 parts of the space */
+        }
+
+
+
+
+    .circle-container {
+        display: flex;
+        justify-content: left   ; /* Align the circles closer */
+        gap: 15px; /* Adjust spacing between the circles */
+        margin-top: 20px;
+    }
+
+    .circle-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none; /* Remove underline for links */
+    }
+
+    .circle-profile img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid #ffffff;
+        transition: transform 0.3s ease;
+    }
+
+    .circle-profile:hover img {
+        transform: scale(1.1); /* Enlarge image on hover */
+    }
+
+    .profile-caption {
+        color: #ffffff;
+        margin-top: 8px;
+        text-align: center;
+        font-size: 14px;
+        width: 100%;
+        padding: 0 5px;
+        word-wrap: break-word; /* Ensure long captions wrap */
+    }
+
+    .circle-profile:hover .profile-caption {
+        color: #ffcc00; /* Optional: Change caption color on hover */
+    }
+
+    
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <img src="img/KPIT.jpeg" alt="Profile Image" >
+        <a href="#intro">Introduction</a>
+        <a href="#feature">Roles</a>
+        <a href="#chain">Innovation </a>
+        <a href="#learning">Learning Journey</a>
+        <a href="#ino">Certificates and Awards</a>
+        <a href="#team">Team Acknowledgment</a>
+                <br>
+        <a href="#">Client</a>
+        <img src="img/Renault.png" alt="Profile Image" >
+        <img src="img/Nissan.png" alt="Profile Image" >
+
+    </div>
+    <div id="intro" class="terminal-section">
+
+    <h1>KPIT – Early Career Experience</h1>
+<p>
+    KPIT was my first company, where I had the opportunity to work across various teams and projects, including <strong>engine control systems</strong> and <strong>powertrain modules</strong>. My journey began with two months of intensive <strong>automotive</strong> and project training, after which I worked hands-on with <strong>Renault-Nissan</strong> as a key client. During my tenure at KPIT, I contributed to both standard projects and <strong>innovative tool-building initiatives</strong>, gaining valuable experience across multiple domains.
+</p>
+<p>
+    My key responsibilities included manual coding in <strong>Embedded C</strong> for <strong>fixed-point processors</strong> and executing rigorous <strong>Software-in-the-Loop (SIL) testing</strong> to ensure system reliability. I participated in five different projects, some overlapping in their early phases, which provided exposure to both task-driven and system-wide functionalities. These projects primarily focused on <strong>powertrain modules</strong>, where I worked on detailed <strong>engine control logic</strong>, task execution, and integration into overall vehicle systems.
+</p>
+<p>
+    While confidentiality agreements prevent me from disclosing proprietary information, my experience highlights my strong technical capabilities and readiness for future roles or collaborations.
+</p>
+
+    <h2>Key Roles and Contributions:</h2>
+    <ul>
+        <li><strong>Manual Coding for Fixed-Point Processors:</strong> Developed embedded C code for fixed-point processors, adhering to stringent industry standards like MISRA-C.</li>
+        <li><strong>Testing for Floating-Point Processors:</strong> Conducted functional and SIL testing for floating-point processors, ensuring high levels of code quality and performance.</li>
+        <li><strong>Model Migration to AUTOSAR Specifications:</strong> Managed the migration of control models to meet AUTOSAR specifications, followed by Model-in-the-Loop (MIL) and SIL testing.</li>
+        <li><strong>Tool Development and Automation Workflow:</strong> Developed tools for automating workflows, significantly improving productivity and reducing testing time.</li>
+        <li><strong>Innovation in Vehicle Prognostics and Road Profiling:</strong> Led an innovative project for vehicle health monitoring and road profiling, while also mentoring new recruits as part of the ECode initiative.</li>
+    </ul>
+
+    </div>
+        <div id="feature" class="terminal-section">
+        <h2> Manual Coding for Fixed-Point Processor    Toolchain Process</h2>
+
+<div class="process-step">
+    <img src="img/KPIT/embeded-c.png" alt="Simulink Icon">
+    <div>
+        <strong>1. Simulink Model Changes and Manual Embedded C Code</strong><br>
+        <em>Objective:</em> Implement manual embedded C code based on Simulink model changes.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Receive model changes in Simulink.</li>
+            <li>Develop manual embedded C code corresponding to the model.</li>
+            <li>Ensure the code follows Renault-Nissan architecture and MISRA-C guidelines.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="process-step">
+    <img src="img/KPIT/cpu.png" alt="Fixed Point Icon">
+    <div>
+        <strong>2. Fixed Point Processor (FXP) Adaptations <button class="details-btn" id="myBtn1">Link</button></strong><br>
+        <em>Objective:</em> Adapt code for FXP , adjusting for range and resolution.<br>
+        <em>Activities:</em>
+
+        <ul>
+            <li>Adjust arithmetic based on range and resolution for the Fixed Point Processor.</li>
+            <li>Implement the adaptations according to FXP specifications.</li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="process-step">
+    <img src="img/KPIT/PCLint.png" alt="PCLint Icon">
+    <div>
+        <strong>3. Static Code Analysis with PCLint</strong><br>
+        <em>Objective:</em> Perform static code analysis to ensure compliance with MISRA-C guidelines.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Run PCLint for static code analysis.</li>
+            <li>Ensure the code adheres to MISRA-C automotive standards.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="process-step">
+    <img src="img/KPIT/mcdc.png" alt="MC/DC Icon">
+    <div>
+        <strong>4. MC/DC Check and Coverage Validation</strong><br>
+        <em>Objective:</em> Achieve 100% coverage with MC/DC testing.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Create test cases to achieve 100% MC/DC coverage<button class="details-btn" id="myBtn3">Link</button>.</li>
+            <li>Verify code behavior matches Simulink model behavior through tests.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="process-step">
+    <img src="img/KPIT/Reactis.jpeg" alt="Reactis Icon">
+ <div>
+        <strong>5. SIL Unit Testing Using Reactis for C</strong><br>
+        <em>Objective:</em> Validate that the manual code produces the same output as the Simulink model during Software-in-the-Loop (SIL) testing.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Pass test cases through the Simulink model to collect outputs.</li>
+            <li>Compare Simulink outputs against manual code outputs.</li>
+            <li>Test the code using Reactis for C as a unit testing tool within the SIL environment.</li>
+        </ul>
+    </div>
+</div>
+
+    </div>
+
+    <div class="terminal-section">
+            <h2>Testing for Floating-Point Processors</h2>
+    
+
+   <ul>
+  <li>Worked with <strong>floating-point processors</strong>, receiving both the <strong>Simulink model</strong> and the corresponding <strong>code</strong>.</li>
+  <li><strong>Ran test cases</strong> to verify that both the model and code produced <strong>identical functionality</strong>.</li>
+  <li>Compared results by passing the test cases through <strong>Simulink</strong> and the <strong>generated code</strong> to ensure consistency.</li>
+  <li>If any <strong>deviations in functionality</strong> were found, we performed a <strong>detailed analysis</strong> to determine the cause and <strong>reported the findings</strong>.</li>
+  <li>Used <strong>Reactis for C</strong> as the testing tool for validation.</li>
+  <li>The code was generated using <strong>Embedded Coder</strong> and provided as part of the task.</li>
+</ul>
+
+     
+    </div>
+
+    <!-- Modals for each button -->
+    <div id="myModal1" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+             <div id="videoContainer">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/S12qx1DwjVk?si=g7opjG-Bb9trXeuc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    <div id="contentContainer">
+           <h1>Fixed-Point Arithmetic</h1>
+    <p>Fixed-point arithmetic is used in embedded systems to represent numbers with both integer and fractional parts, but without using floating-point operations. It uses integers with a fixed scaling factor.</p>
+    
+    <h2>Key Points:</h2>
+    <ul>
+        <li><strong>Q Format:</strong> Numbers are represented as <code>Qm.n</code>, where <em>m</em> is the number of integer bits, and <em>n</em> is the number of fractional bits.</li>
+        <li><strong>Precision and Range:</strong> More fractional bits increase precision, and more integer bits increase range.</li>
+        <li><strong>Addition/Subtraction:</strong> Simple like integer math if numbers have the same scaling.</li>
+        <li><strong>Multiplication:</strong> After multiplying two fixed-point numbers, the result needs to be shifted to the right by the scaling factor.</li>
+        <li><strong>Division:</strong> The dividend is scaled up before dividing to maintain accuracy.</li>
+        <li><strong>Overflow/Underflow:</strong> Special handling like saturation is used to manage exceeding the limits of the number format.</li>
+    </ul>
+    
+    <p>Fixed-point math is faster and uses less memory than floating-point, making it ideal for embedded systems like automotive ECUs.</p>
+</body>
+    </div>
+
+        </div>
+    </div>
+
+
+    <div id="myModal3" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+             <div id="videoContainer">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/xJmunp4WJ0o?si=RwNn2zciCVN8W4ZT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        </div>
+    <div id="contentContainer">
+<h2>MC/DC (Modified Condition/Decision Coverage)</h2>
+
+<p><strong>MC/DC Coverage</strong> is a software testing method used in safety-critical systems like automotive or aerospace software. It ensures that decisions in the code are tested in a way that each condition within the decision is independently evaluated.</p>
+
+<h3>Key Points:</h3>
+<ul>
+  <li><strong>Decision Testing:</strong> Ensures every decision (e.g., an <code>if</code> statement) is tested for both true and false outcomes.</li>
+  <li><strong>Condition Testing:</strong> Makes sure that each condition in a decision affects the outcome independently.</li>
+  <li><strong>Test Coverage:</strong> Tests enough cases to show how each condition influences the decision, but not every combination is required.</li>
+</ul>
+
+<h3>Example:</h3>
+<pre>
+if (A && B)
+{
+    // Do something
+}
+</pre>
+<ul>
+  <li>Test case 1: A = True, B = True (decision is True)</li>
+  <li>Test case 2: A = False, B = True (changing A makes the decision False)</li>
+  <li>Test case 3: A = True, B = False (changing B makes the decision False)</li>
+</ul>
+
+<p><strong>Summary:</strong> MC/DC ensures each condition in a decision is tested for its impact, making it an efficient and thorough testing approach for critical systems.</p>
+
+    </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="terminal-section">
+        <h2>Model Migration to AUTOSAR Specifications</h2>
+        <p>This project involved migrating Simulink models to <strong>AUTOSAR compliance</strong>, ensuring that the models adhered to industry standards while maintaining functionality. Here's a breakdown of the key tasks:</p>
+
+<ul>
+  <li><strong>First experience with modeling</strong>, specifically migrating models to <strong>AUTOSAR compliance</strong>.</li>
+  <li>Required <strong>variable changes</strong> in the <strong>database</strong> and updates to the <strong>model flow</strong> in Simulink.</li>
+  <li>Made changes to specific <strong>blocks</strong> and adjusted the <strong>mapping structure</strong>.</li>
+  <li>Passed test cases to both original and migrated models to ensure <strong>functionality remained the same</strong>.</li>
+  <li>Conducted <strong>analysis and debugging</strong> to address any issues post-migration.</li>
+  <li>Ensured compliance by performing <strong>global MXAM checks</strong>.</li>
+  <li>Used an <strong>in-house tool developed by Renault</strong> to manage the entire toolchain process.</li>
+</ul>
+
+
+    </div>
+
+
+    <div class="terminal-section">
+<h2>Tool Development and Automation Workflow</h2>
+<p>I was tasked with creating an <strong>automation process</strong> for a <strong>new team</strong> that had no existing framework. I independently developed automation for the <strong>Polyspace tool</strong>, which involved handling variable ranges and generating reports. The reporting was automated using a combination of <strong>VBA</strong> for formatting the <code>.doc</code> reports and <strong>MATLAB</strong> for Polyspace integration, ensuring it functioned as a complete system.</p>
+
+<p>Additionally, I automated the <strong>static code analysis</strong> part of the toolchain using <strong>QAC</strong>, which was handled through a <strong>Python script</strong>. All these tools were integrated into a <strong>custom GUI</strong> that streamlined the automation process.</p>
+
+<p>My responsibilities included <strong>independently designing, developing, and testing</strong> the entire tool, as well as <strong>maintaining it</strong> and resolving any bugs that arose. This was my first project where I handled the development and release entirely from scratch. For my efforts, I was recognized with a <strong>High Flyer Award</strong>.</p>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div id="chain" class="terminal-section">
+
+  <h2>Innovation in Vehicle Prognostics and Road Profiling</h2>
+  <p>Toward the later part of my time with the company, I joined the <strong>ECode team</strong>, a group focused on <strong>education, learning, and innovation</strong>. Here, I conducted <strong>lectures and lab sessions</strong> based on my experience with <strong>Simulink modeling</strong> and <strong>embedded coding</strong>. I also delivered <strong>automation tutorials</strong> on <strong>Python integration</strong>. Additionally, I developed and updated the team’s <strong>curriculum</strong>, incorporating my own knowledge and feedback from colleagues.</p>
+
+<p>As part of the innovation initiatives within the team, I contributed to a <strong>vehicle prognosis and diagnostics project</strong>, which aimed to develop <strong>low-cost automotive solutions</strong> for <strong>vehicle safety and prediction</strong>. I played a key role in creating a <strong>CI/CD workflow</strong> and establishing a structured <strong>coding architecture</strong> to support the team's work.</p>
+
+<p>One of the key features I worked on in this project was solving the <strong>road profile problem</strong>, where we successfully developed a <strong>prototype solution</strong>. This work culminated in a paper published at <strong>IEEE Xpleo</strong> titled "<strong>Trigger-Based Pothole Detection Using Smartphone and OBD-II</strong>."</p>
+
+    </div>
+
+
+
+    <div id="learning" class="terminal-section">
+
+        <h1>My Experience and Learning Journey</h1>
+
+        <p>At my first company, I gained valuable experience through a <strong>dedicated 2-month training program</strong> focused on <strong>Simulink</strong> and <strong>automotive systems</strong>. As part of this training, we designed and tested models, which gave me a strong foundation in <strong>Simulink modeling</strong>. Additionally, I worked on <strong>embedded C coding</strong> within an existing coding architecture, learning how it integrates into the broader system.</p>
+
+        <p>I also developed a deep understanding of <strong>fixed-point processors</strong> and explored various <strong>design blocks</strong> used in automotive systems, such as <strong>hysteresis</strong>, <strong>filters</strong>, and <strong>interpolation functions</strong>. These were all new and fascinating concepts for me. In the testing domain, I learned about <strong>MC/DC coverage</strong> and how to write <strong>robust test cases</strong> to ensure code reliability.</p>
+
+        <p>Another area of growth was writing code for <strong>floating-point adaptations</strong>, where I gained insight into <strong>arithmetic details</strong> like <strong>scaling factors</strong> for filters and other crucial considerations when writing fixed-point code. Additionally, as part of a <strong>research project</strong>, I learned how to initiate and structure <strong>self-motivated projects</strong>, which further honed my skills in innovation and problem-solving.</p>
+
+        <p>Overall, during my more than <strong>two years</strong> at the company, I gained <strong>extensive learning</strong> and hands-on experience, making it a highly enriching first corporate experience.</p>
+
+
+
+    </div>
+
+
+
+
+     <div id="ino" class="terminal-section">
+
+   
+<h1>Certificates and Awards from KPIT</h1>
+
+<p>Below are some of the certificates and awards I received during my time at KPIT:</p>
+
+<ol>
+      <li><strong>High Flyer Award</strong>  <button class="details-btn" id="myBtn2">Link</button>
+ – Recognized for being a quick learner and contributing to script automation initiatives   
+ </li>
+
+  <li><strong>ECode: Genesis</strong>  <button class="details-btn" id="myBtn7">Link</button> – 3-Month Training Completion</li>
+  <li><strong>MathWorks: Stateflow for Automotive</strong>   <button class="details-btn" id="myBtn6">Link</button>
+– Comprehensive training on Stateflow applications in automotive systems</li>
+  <li><strong>MathWorks: Simulink for Automotive System Design</strong>  <button class="details-btn" id="myBtn4">Link</button>
+ – Expertise in Simulink for designing automotive systems</li>
+  <li><strong>MathWorks: Verification and Validation of Simulink Models</strong>  <button class="details-btn" id="myBtn5">Link</button>
+ – Training on ensuring model accuracy and compliance through verification and validation</li>
+</ol>
+
+
+
+
+
+    </div>
+<div id="team" class="terminal-section">
+<h1>Team Acknowledgment</h1>
+
+<p>As my first company, I had the opportunity to work on a variety of projects alongside many colleagues and seniors. Each team was composed of a diverse group of individuals, and I learned a great deal from everyone. While it would be challenging to detail each person's contributions, I will provide a brief overview of the teams I worked with.</p>
+<p>I was part of two teams: <strong>RNTBCI</strong> and <strong>ECode</strong>. Each team was large in terms of personnel, but the individual projects within those teams were more focused and limited in scope. I appreciated the opportunity to learn, innovate, and build lasting friendships during my time there, which made the experience truly memorable. I am grateful for the collaborative environment and the support I received from my teammates.</p>
+
+<p>As my first company, I had the opportunity to work on a variety of projects alongside many colleagues and seniors. Each team was composed of a diverse group of individuals, and I learned a great deal from everyone. While it would be challenging to detail each person's contributions, I will provide a brief overview of the teams I worked with.</p>
+
+
+<h3>Renault Nissan Technology & Business Centre India  (RNTBCI) Team</h3>
+    <table>
+        <tr>
+            <td><img src="img/KPIT/kpit-1.png" alt="Description of the image" width="450"></td>
+            <td><img src="img/KPIT/kpit-2.png" alt="Description of the image" width="450"></td>
+        </tr>
+    </table>
+<p>In the <strong>RNTBCI project</strong>, I had the privilege of working with a team that included numerous <strong>seniors</strong>, <strong>management personnel</strong>, and <strong>team leads</strong>, along with my fellow colleagues. As this was my first company, the adjustment was smooth due to the welcoming and friendly nature of the team. Below are some individuals whom I worked under as either managers or team leads, where I was a valued member of their team.</p>
+
+ <div class="circle-container">
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/changappa-ammanichanda-04947537/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-1.jpeg" alt="Profile 1">
+            <div class="profile-caption">Rajesh Sundaram</div>
+        </a>
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/mohanraj-g-2b741922/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-2.jpeg" alt="Profile 1">
+            <div class="profile-caption">Mohanraj G</div>
+        </a>
+        <a href="https://www.linkedin.com/in/vijayakumar-mylsamy-ab673517/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-4.jpeg" alt="Profile 1">
+            <div class="profile-caption">Vijayakumar Mylsam</div>
+        </a>
+        <a href="https://www.linkedin.com/in/aishwarya-lakshmi-a84592a4/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-3.jpeg" alt="Profile 1">
+            <div class="profile-caption">Aishwarya Lakshmi </div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/aishwarya-lakshmi-a84592a4/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-5.jpeg" alt="Profile 1">
+            <div class="profile-caption">Subanya Suriyamurthy</div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/rupali-bhore-b59994114/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-6.jpeg" alt="Profile 1">
+            <div class="profile-caption">Rupali Bhore</div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/basavaraj-totagi-0bb5681a2/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-7.jpeg" alt="Profile 1">
+            <div class="profile-caption">Basavaraj Totagi</div>
+        </a>
+
+
+
+
+    </div>
+        <div class="circle-container">
+
+        <a href="https://www.linkedin.com/in/arindam-roy-b3a88992/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-8.jpeg" alt="Profile 1">
+            <div class="profile-caption">Arindam Roy</div>
+        </a>
+        <a href="https://www.linkedin.com/in/sachin-katti-3b709261/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-9.jpeg" alt="Profile 1">
+            <div class="profile-caption">Sachin Katti</div>
+        </a>
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/archana-r-nair-677939153/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-10.jpeg" alt="Profile 1">
+            <div class="profile-caption">Archana R Nair</div>
+        </a>
+        <a href="https://www.linkedin.com/in/abhishek-h-d-a5462aa2/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-11.jpeg" alt="Profile 1">
+            <div class="profile-caption">Abhishek H D</div>
+        </a>
+
+
+        <a href="https://www.linkedin.com/in/devang-bhutara-86bb67125/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-12.jpeg" alt="Profile 1">
+            <div class="profile-caption">Devang Bhutara</div>
+        </a>
+        
+    </div>
+
+
+<h3>ECode</h3>
+<img src="img/KPIT/kpit-3.png" alt="Description of the image" width="450">
+
+<p>As part of the <strong>ECode team</strong>, I had the honor of working under <strong>Prithvi Sekhar Pagala</strong>, who led several innovation and learning initiatives. I am especially grateful for the opportunity to collaborate with him, as we not only worked on various projects but also published a paper together during my time at the company. It was a rewarding experience working within his team.</p>
+        <div class="circle-container">
+
+        <a href="https://www.linkedin.com/in/pspphd/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-13.jpeg" alt="Profile 1">
+            <div class="profile-caption">Prithvi Sekhar Pagala</div>
+        </a>
+        <a href="https://www.linkedin.com/in/thrilochan-sharma-pendyala-8186a4116/ " target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-14.jpeg" alt="Profile 1">
+            <div class="profile-caption">Thrilochan Pendyala</div>
+        </a>
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/sonali-kangralkar-379301150/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-15.jpeg" alt="Profile 1">
+            <div class="profile-caption">Sonali Kangralkar</div>
+        </a>
+        <a href="https://www.linkedin.com/in/ashwini-kanakapura-sriranga-7bb5a020b/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-16.jpeg" alt="Profile 1">
+            <div class="profile-caption">Ashwini Kanakapura Sriranga</div>
+        </a>
+
+
+        <a href="https://www.linkedin.com/in/sankalprajan-p-01a254166/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-17.jpeg" alt="Profile 1">
+            <div class="profile-caption">Sankalprajan P</div>
+        </a>
+        
+    </div>
+
+   
+    <h3>Genesis</h3>
+    <img src="img/KPIT/kpit-25.jpeg" alt="Description of the image" width="450">
+
+<p>These individuals were among my first friends and colleagues in the corporate environment during a 3-month training and exam period as part of the <strong>Genesis batch</strong>. I trained and learned a great deal with them, and it was an invaluable experience. We continue to collaborate on innovation projects even as friends. One such collaboration with <strong>Shristi Kumari</strong>, <strong>Vaishnavi Patekar</strong>, and <strong>Subodh Khandelwal</strong> led to the publication of a paper later on.</p>
+
+
+
+
+    <div class="circle-container">
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/subodh-khandelwal-288059140/  " target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-18.jpeg" alt="Profile 1">
+            <div class="profile-caption">Subodh Khandelwal </div>
+        </a>
+        
+        <!-- Profile 2 -->
+        <a href="https://www.linkedin.com/in/vaishnavi-patekar/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-19.jpeg" alt="Profile 2">
+            <div class="profile-caption">Vaishnavi Patekar</div>
+        </a>
+        <a href="https://www.linkedin.com/in/shristi-kumari/ " target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-20.jpeg" alt="Profile 2">
+            <div class="profile-caption">Shristi Kumari</div>
+        </a>
+        <a href="https://www.linkedin.com/in/shristi-kumari/ " target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-21.jpeg" alt="Profile 2">
+            <div class="profile-caption">Rashmi Patil</div>
+        </a>
+        <a href="https://www.linkedin.com/in/smriti-ashish-028/" target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-22.jpeg" alt="Profile 1">
+            <div class="profile-caption">Smriti A.</div>
+        </a>
+        
+
+        <a href="https://www.linkedin.com/in/chetan-kulkarni-927b7b152/ " target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-23.jpeg" alt="Profile 2">
+            <div class="profile-caption"> Chetan Kulkarni</div>
+        </a>
+        <a href="https://www.linkedin.com/in/rkg1995/ " target="_blank" class="circle-profile">
+            <img src="img/KPIT/kpit-24.jpeg" alt="Profile 2">
+            <div class="profile-caption">Rohit Gupta</div>
+        </a>
+
+
+
+    </div>
+
+   <p>Feel free to reach out to any of these individuals for <strong>background checks</strong> or <strong>verification</strong> regarding my time and contributions to the projects.</p>
+ <!-- Add additional modals as needed for other buttons -->
+    <div id="myModal2" class="modal">
+        <div class="modal-content-1">
+            <span class="close">&times;</span>
+            <img src="img/KPIT/kpit-c.png" alt="Profile 2">
+
+        </div>
+    </div>
+      <!-- Add additional modals as needed for other buttons -->
+    <div id="myModal4" class="modal">
+        <div class="modal-content-1">
+            <span class="close">&times;</span>
+            <img src="img/KPIT/kpit-c-2.png" alt="Profile 2">    
+        </div>
+    </div>
+        <div id="myModal5" class="modal">
+        <div class="modal-content-1">
+            <span class="close">&times;</span>
+            <img src="img/KPIT/kpit-c-3.png" alt="Profile 2">    
+        </div>
+    </div>
+     <!-- Add additional modals as needed for other buttons -->
+    <div id="myModal6" class="modal">
+        <div class="modal-content-1">
+            <span class="close">&times;</span>
+            <img src="img/KPIT/kpit-c-1.png" alt="Profile 2">
+
+        </div>
+    </div>
+   
+        <div id="myModal7" class="modal">
+        <div class="modal-content-1">
+            <span class="close">&times;</span>
+            <img src="img/KPIT/kpit-c-4.png" alt="Profile 2">    
+        </div>
+    </div>
+
+    <script>
+        // Get all modals
+        const modals = [
+            document.getElementById("myModal1"),
+            document.getElementById("myModal3"),
+            document.getElementById("myModal2"),
+            document.getElementById("myModal4"),
+            document.getElementById("myModal5"),
+            document.getElementById("myModal6"),
+            document.getElementById("myModal7"),
+             //document.getElementById("myModal8"),
+        ];
+
+        // Get all buttons
+        const buttons = [
+            document.getElementById("myBtn1"),
+            document.getElementById("myBtn3"),
+            document.getElementById("myBtn2"),
+            document.getElementById("myBtn4"),
+           document.getElementById("myBtn5"),
+           document.getElementById("myBtn6"),
+            document.getElementById("myBtn7"),
+            //document.getElementById("myBtn8"),
+        ];
+
+        // Get the <span> elements that close the modals
+        const spans = document.getElementsByClassName("close");
+
+        // Add click event to each button to open the corresponding modal
+        buttons.forEach((button, index) => {
+            button.onclick = function() {
+                modals[index].style.display = "block";
+            }
+        });
+
+        // When the user clicks on <span> (x), close the modals and stop the video
+        Array.from(spans).forEach((span, index) => {
+            span.onclick = function() {
+                modals[index].style.display = "none";
+                const videoFrames = modals[index].querySelectorAll('iframe');
+                videoFrames.forEach(video => {
+                    video.src = video.src;  // Reset the video by re-assigning the src attribute
+                });
+            }
+        });
+
+        // When the user clicks anywhere outside of the modal, close it and stop the video
+        window.onclick = function(event) {
+            modals.forEach((modal, index) => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    const videoFrames = modal.querySelectorAll('iframe');
+                    videoFrames.forEach(video => {
+                        video.src = video.src;  // Reset the video
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

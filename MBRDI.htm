@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBRDI</title>
+    <style>
+
+                strong {
+            color: green;
+        }
+
+                .process-step {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .process-step img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* Basic styles for the page */
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #2e2e2e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #1e1e1e;
+            padding: 20px;
+            position: fixed;
+        }
+
+        .sidebar img {
+            display: block;
+            width: 30%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #2b2b2b;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .sidebar a:hover {
+            background-color: #00ff00;
+            color: #1e1e1e;
+        }
+
+
+        .terminal-section {
+            color: #ffffff; 
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            width: 72%;
+            padding: 20px;
+            margin: 20px auto;
+            margin-left: 300px; /* Ensure space from sidebar */
+            margin-top: 20px; /* Add space from top */
+        }
+
+        /* Button styles */
+        /* Button styles */
+/* Button styles */
+.details-btn {
+    background-color: #2b2b2b;
+    color: #00ff00;
+    padding: 5px 5px; /* Keep the same height and width */
+    border: 2px solid #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 0 5px #00ff00;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border-radius: 5px; /* You can keep or remove this depending on your preference */
+    margin-top: 10px;
+    margin-right: 5px; /* Spacing between buttons */
+}
+
+
+
+        .details-btn:hover {
+            background-color: #00ff00;
+            color: #1e1e1e;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px; 
+        }
+        .modal-content {
+            background-color: #1e1e1e;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 90%; 
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            display: flex; /* Flexbox for layout */
+                max-height: 80vh; /* Limit the height */
+
+            overflow-y: auto; /* Enable scrolling */
+
+        }
+        .modal-content-1 {
+            background-color: #1e1e1e;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 90%; 
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            overflow-y: auto; /* Enable scrolling */
+                max-height: 80vh; /* Limit the height */
+
+
+
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+                #videoContainer {
+            flex: 1; /* Take up 1 part of the space */
+            margin-right: 20px; /* Space between video and content */
+        }
+        #contentContainer {
+            flex: 2; /* Take up 2 parts of the space */
+        }
+
+
+
+
+    .circle-container {
+        display: flex;
+        justify-content: left   ; /* Align the circles closer */
+        gap: 15px; /* Adjust spacing between the circles */
+        margin-top: 20px;
+    }
+
+    .circle-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none; /* Remove underline for links */
+    }
+
+    .circle-profile img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid #ffffff;
+        transition: transform 0.3s ease;
+    }
+
+    .circle-profile:hover img {
+        transform: scale(1.1); /* Enlarge image on hover */
+    }
+
+    .profile-caption {
+        color: #ffffff;
+        margin-top: 8px;
+        text-align: center;
+        font-size: 14px;
+        width: 100%;
+        padding: 0 5px;
+        word-wrap: break-word; /* Ensure long captions wrap */
+    }
+
+    .circle-profile:hover .profile-caption {
+        color: #ffcc00; /* Optional: Change caption color on hover */
+    }
+
+    
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <img src="img/MBRDI.jpeg" alt="Profile Image" >
+        <a href="#intro">Introduction</a>
+        <a href="#feature">Feature</a>
+        <a href="#chain">Toolchain Process</a>
+        <a href="#learning">Learning Journey</a>
+        <a href="#ino">Innovative</a>
+        <a href="#team">Team Acknowledgment</a>
+
+    </div>
+    <div id="intro" class="terminal-section">
+
+        <h1>Introduction</h1>
+        <p>I worked at Mercedes-Benz Research & Development India from April 2021 to September 2023. During these two years, I gained extensive experience in electro-mechanical systems, embedded C, Simulink, and automotive mechanical features. While I cannot share confidential details due to company policies, I will provide relevant insights into my work, showcasing my competencies for potential roles or collaborations. In the following sections, I will outline the key features I contributed to, the toolchains we utilized, and the knowledge I acquired. Additionally, I will highlight the innovative, self-motivated tools I developed, and conclude with details about the team I worked with.</p>
+
+    </div>
+        <div id="feature" class="terminal-section">
+
+        <h1>Feature</h1>
+        <p>I primarily worked on three key features: actuators, Camtronic systems, and sensors. Below, I will provide a detailed overview of each.</p>
+
+    </div>
+
+    <div class="terminal-section">
+                <h2>Actuators</h2>
+        <p>We had motor-controlled actuators for several components, with seven different actuators requiring motor control. A straightforward example is the throttle valve, which regulates fuel flow into the throttle based on the position of the accelerator pedal. This system was electro-mechanically managed by a control algorithm using PWM-based motor control, with the logic designed in Simulink models.
+        </p>
+        <br>     
+        One of my main responsibilities was to understand the existing PWM motor control logic for these actuators and develop new features as required, as well as fix any bugs. The motor control system utilized Stateflow diagrams to manage different state scenarios, including maintenance and fail-safe mechanisms. These systems, combined with control algorithms, ensured precise motor movement control.
+
+        <br>
+        <br>
+        <p>
+        Without disclosing any confidential details, I can mention that fault detection, correction, and, in the worst cases, fail-safe positioning and recovery actions were part of the software development I contributed to. The Simulink models were complex, covering all car line features and actuator variability.
+        </p>
+        <figure>
+        <img src="img/MBRDI/mbrdi-1.png" alt="Description" width="200" >
+        <figcaption>Electronic Throttle Control System</figcaption>
+        </figure>
+        <br>
+        Below is a list of the actuators for which we designed software units. While the core functionality was similar across these units, there were minor variations tailored to specific applications. You can click on each actuator for more detailed information.<br>
+        For Variable Geometry Turbocharger:
+
+        <button class="details-btn" id="myBtn1">Link</button>
+        <br>
+        1. Low-Pressure VTGA (Variable Turbine Geometry Assembly)
+        <br>
+        2. High-Pressure VTGA (Variable Turbine Geometry Assembly)
+
+        <button class="details-btn" id="myBtn2">Link</button>
+        <br>
+        <br>
+         Exhaust Gas Recirculation Valves (EGRV)
+          <button class="details-btn" id="myBtn3">Link</button>
+         <br>
+          <br>
+        3. Low-Pressure Exhaust Gas Recirculation Valve 
+        <br>
+         4. High-Pressure Exhaust Gas Recirculation Valve 
+       
+        
+        <button class="details-btn" id="myBtn4">Link</button>
+        <br>
+        5. Throttle Actuator
+       
+        <button class="details-btn" id="myBtn5">Link</button>
+        <br>
+        6. Swirl flap Actuator
+        <button class="details-btn" id="myBtn6">Link</button>
+        <!--<button class="details-btn" id="myBtn7">Button 7</button>-->
+    </div>
+
+    <!-- Modals for each button -->
+    <div id="myModal1" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+             <div id="videoContainer">
+            <iframe id="video1" width="560" height="315" src="https://www.youtube.com/embed/hv_nIdILJ9I" frameborder="0" allowfullscreen></iframe>
+        </div>
+    <div id="contentContainer">
+        <h3>Variable Turbine Geometry Assembly (VTGA) Overview</h3>
+
+         <p>The <strong>Variable Turbine Geometry Assembly (VTGA) </strong>is a cutting-edge turbocharger technology designed to enhance engine performance by optimizing exhaust gas flow. By dynamically adjusting the turbine's inlet geometry, VTGA significantly improves efficiency, minimizes turbo lag, and ensures smoother power delivery across a wide range of engine speeds. This adaptability is crucial for achieving optimal performance in various driving conditions.</p>
+
+
+
+        <p>VTGA systems are classified into two types: <strong>Low-Pressure VTGA (LPVTGA)</strong>, which excels in high-speed operations, and <strong>High-Pressure VTGA (HPVTGA)</strong>, which allows for rapid spool-up at lower speeds. These systems are controlled by actuators, typically electric motors, that adjust the turbine vanes in real-time based on signals from the engine control unit (ECU). At our company, we are actively developing the motor control software unit using Simulink, ensuring precise control of the turbine vanes for enhanced responsiveness and improved fuel efficiency.</p>
+    </div>
+
+        </div>
+    </div>
+
+    <!-- Add additional modals as needed for other buttons -->
+    <div id="myModal2" class="modal">
+        <div class="modal-content-1">
+            <span class="close">&times;</span>
+
+<table border="1">
+  <tr>
+    <th>Feature</th>
+    <td>VTGA is a turbocharger technology that adjusts the angle of turbine vanes to control the flow of exhaust gases. This improves engine performance by optimizing boost pressure at different engine speeds.</td>
+  </tr>
+  <tr>
+    <td>How It Works</td>
+    <td>Adjustable vanes around the turbine change their angle to direct exhaust gases efficiently. At low speeds, the vanes close to increase pressure, reducing turbo lag. At high speeds, the vanes open to allow more gas flow, improving power and efficiency.</td>
+  </tr>
+  <tr>
+    <td>Motor Relationship</td>
+    <td>An electric motor or actuator controls the movement of these vanes. The engine control unit (ECU) sends signals to the motor to adjust the vane angles in real-time, based on engine load and speed.</td>
+  </tr>
+  <tr>
+    <td>Benefits</td>
+    <td>Reduces turbo lag, improves power delivery, enhances fuel efficiency. Used in diesel and performance vehicles.</td>
+  </tr>
+</table>
+<br><br>    
+<table border="1">
+  <tr>
+    <th>Feature</th>
+    <th>High-Pressure VTGA (HPVTGA)</th>
+    <th>Low-Pressure VTGA (LPVTGA)</th>
+  </tr>
+  <tr>
+    <td>Operating Conditions</td>
+    <td>Low engine speeds and low load conditions</td>
+    <td>High engine speeds and high load conditions</td>
+  </tr>
+  <tr>
+    <td>Primary Use</td>
+    <td>Provides quick boost at low RPM (reduces turbo lag)</td>
+    <td>Handles large exhaust gas flow at high RPM (maximizes power)</td>
+  </tr>
+  <tr>
+    <td>Turbocharger Size</td>
+    <td>Smaller turbo, faster spool-up</td>
+    <td>Larger turbo, more capacity for high-speed operation</td>
+  </tr>
+  <tr>
+    <td>Boost Response</td>
+    <td>Immediate and quick boost response</td>
+    <td>Sustains high boost at higher speeds</td>
+  </tr>
+  <tr>
+    <td>Exhaust Gas Handling</td>
+    <td>Works best with low exhaust gas flow</td>
+    <td>Designed for high exhaust gas flow</td>
+  </tr>
+  <tr>
+    <td>Key Benefits</td>
+    <td>Improves low-end torque and acceleration (city driving)</td>
+    <td>Enhances high-speed performance and efficiency (highway)</td>
+  </tr>
+  <tr>
+    <td>Control Mechanism</td>
+    <td>Electric motor or actuator adjusts vane angle for quick boost</td>
+    <td>Electric motor or actuator adjusts vanes for high flow</td>
+  </tr>
+  <tr>
+    <td>Application</td>
+    <td>City driving, low-speed acceleration, heavy-duty vehicles</td>
+    <td>Highway driving, performance at high speeds</td>
+  </tr>
+</table>
+
+    
+        </div>
+    </div>
+
+    <div id="myModal3" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+             <div id="videoContainer">
+                <iframe  width="560" height="315" src="https://www.youtube.com/embed/fjU__W4lqsA?si=plB9fPUF8HZLmWum" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        </div>
+    <div id="contentContainer">
+            <h1>Low-Pressure Exhaust Gas Recirculation Valve (EGRV)</h1>
+
+    <h2>Functionality</h2>
+    <ul>
+        <li>Recirculates exhaust gases to reduce combustion temperatures and NOx emissions.</li>
+        <li>Draws exhaust gases from the manifold after the turbocharger for better efficiency.</li>
+    </ul>
+
+    <h2>Control Mechanism</h2>
+    <ul>
+        <li>Controlled by a motor that adjusts the valve position.</li>
+        <li>Uses Pulse Width Modulation (PWM) for precise valve control.</li>
+    </ul>
+
+    <h2>Benefits</h2>
+    <ul>
+        <li>Lowers NOx emissions to meet regulations.</li>
+        <li>Improves fuel efficiency and engine performance.</li>
+    </ul>
+
+    <h2>Challenges</h2>
+    <ul>
+        <li>Can accumulate carbon deposits, requiring maintenance.</li>
+        <li>Adds complexity to engine design.</li>
+    </ul>
+    </div>
+
+        </div>
+    </div>
+
+    <div id="myModal4" class="modal">
+        <div class="modal-content-1">
+            <span class="close">&times;</span>
+            
+<h2>Comparison of Low-Pressure and High-Pressure EGR Valves</h2>
+
+<table border="1">
+    <tr>
+        <th>Feature</th>
+        <th>Low-Pressure EGRV</th>
+        <th>High-Pressure EGRV</th>
+    </tr>
+    <tr>
+        <td>Location</td>
+        <td>Takes exhaust gas from the exhaust manifold and feeds it back into the intake system downstream of the turbocharger or supercharger.</td>
+        <td>Takes exhaust gas directly from the exhaust manifold and feeds it back into the intake system before the turbocharger.</td>
+    </tr>
+    <tr>
+        <td>Pressure Source</td>
+        <td>Uses a low-pressure source, typically from the intake side.</td>
+        <td>Uses a high-pressure source directly from the exhaust manifold.</td>
+    </tr>
+    <tr>
+        <td>Emissions Reduction</td>
+        <td>Effective in reducing NOx emissions by lowering combustion temperatures.</td>
+        <td>Also effective in reducing NOx emissions, but typically better suited for diesel engines.</td>
+    </tr>
+    <tr>
+        <td>Fuel Efficiency</td>
+        <td>Can improve fuel efficiency by allowing the engine to operate at a higher efficiency point.</td>
+        <td>Can enhance fuel efficiency, especially in diesel engines, but may result in higher intake manifold temperatures.</td>
+    </tr>
+    <tr>
+        <td>Combustion Temperature</td>
+        <td>Lower combustion temperatures due to dilution with exhaust gases, helping control NOx emissions.</td>
+        <td>Can lead to higher combustion temperatures compared to low-pressure systems, depending on the design and operation.</td>
+    </tr>
+    <tr>
+        <td>Complexity</td>
+        <td>Typically more complex due to the need for a sophisticated control system to manage EGR flow and integration with turbocharging.</td>
+        <td>Generally simpler in design but may require additional calibration for optimal performance.</td>
+    </tr>
+    <tr>
+        <td>Applications</td>
+        <td>Commonly used in gasoline engines and some modern diesel engines.</td>
+        <td>Predominantly found in diesel engines, especially in heavy-duty applications.</td>
+    </tr>
+    <tr>
+        <td>Maintenance Issues</td>
+        <td>Prone to carbon build-up, affecting performance; regular maintenance may be required.</td>
+        <td>Also prone to carbon deposits but may have different cleaning requirements due to higher temperatures.</td>
+    </tr>
+    <tr>
+        <td>Response Time</td>
+        <td>May have a slower response time due to positioning in the intake system.</td>
+        <td>Generally faster response time, as it draws directly from the exhaust manifold.</td>
+    </tr>
+</table>
+        </div>
+    </div>
+
+    <div id="myModal5" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+             <div id="videoContainer">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ZV5jeWW3wPY?si=cQqTcBiH1Yoexc4P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    <div id="contentContainer">
+        
+        <h1>Throttle Actuators Overview</h1>
+    <p><strong>Function:</strong> Control the amount of air entering the engine, affecting power and efficiency. They adjust the throttle plate based on driver inputs.</p>
+
+    <h2>Types</h2>
+    <h3>1. Electronic Throttle Control (ETC)</h3>
+    <p><strong>How it Works:</strong> Uses an electric motor to adjust the throttle plate based on signals from the Engine Control Unit (ECU).</p>
+    <p><strong>Benefits:</strong> Enhances fuel efficiency, reduces emissions, and improves acceleration.</p>
+
+    <h3>2. Mechanical Throttle Control</h3>
+    <p><strong>How it Works:</strong> Uses a cable connected to the accelerator pedal to open the throttle plate.</p>
+    <p><strong>Limitations:</strong> Less precise than electronic systems.</p>
+
+    <h2>Key Components</h2>
+    <ul>
+        <li><strong>Throttle Body:</strong> Contains the throttle plate.</li>
+        <li><strong>Actuator Motor:</strong> Moves the throttle plate using electrical signals.</li>
+        <li><strong>Position Sensors:</strong> Provide feedback to the ECU about the throttle plate's position.</li>
+    </ul>
+
+    <h2>Motor Control</h2>
+    <p><strong>PWM Control:</strong> The ECU uses Pulse Width Modulation to control the actuator motor’s speed and position, allowing precise throttle control.</p>
+    <p><strong>Feedback Loop:</strong> Continuous monitoring ensures accurate throttle operation for optimal performance.</p>
+
+    <h2>Advantages</h2>
+    <ul>
+        <li><strong>Precision:</strong> Improved control over engine performance.</li>
+        <li><strong>Safety:</strong> Works with advanced systems like cruise control.</li>
+        <li><strong>Diagnostics:</strong> Monitors for issues to enhance reliability.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Throttle actuators are vital for modern engines, providing precise air intake control and improving vehicle performance and efficiency through electronic operation.</p>
+
+
+    </div>
+
+        </div>
+    </div>
+
+    <div id="myModal6" class="modal">
+
+
+
+
+        <div class="modal-content">
+            <span class="close">&times;</span>
+             <div id="videoContainer">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ooatlAONjoA?si=FdTHODvyONkKSmME" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        </div>
+    <div id="contentContainer">
+    
+
+            <h1>Swirl Flap in Automotive Motor Control and PWM</h1>
+        
+        <h2>What is a Swirl Flap?</h2>
+        <p>
+            A <strong>swirl flap</strong> is a device in the intake manifold of an engine that helps improve fuel-air mixing.
+            By creating turbulence (or "swirl") in the air entering the engine, it enhances combustion efficiency and reduces emissions.
+        </p>
+
+        <h2>Basic Function of Swirl Flap</h2>
+        <ul>
+            <li><strong>Swirl flap:</strong> Adjusts airflow into the engine, controlling the turbulence or swirl.</li>
+            <li><strong>Purpose:</strong> Better air and fuel mixing leads to improved combustion, efficiency, and reduced emissions.</li>
+            <li><strong>Location:</strong> Found in the intake manifold of the engine.</li>
+        </ul>
+
+        <h2>Motor Control of Swirl Flaps</h2>
+        <p>The swirl flaps are controlled by a small <strong>DC motor</strong> or actuator, often managed by the <strong>ECU (Electronic Control Unit)</strong>.</p>
+        <ul>
+            <li><strong>Position Control:</strong> The ECU sends signals to adjust the flap position based on engine data.</li>
+            <li><strong>Feedback Mechanism:</strong> Sensors provide feedback on the actual flap position to ensure accuracy.</li>
+            <li><strong>Protection:</strong> Software detects motor failures or positioning errors.</li>
+        </ul>
+
+        <h2>PWM Control (Pulse Width Modulation)</h2>
+        <p>
+            <strong>PWM</strong> is used to control the motor by delivering power in pulses, adjusting the flap's position.
+        </p>
+        <ul>
+            <li><strong>Duty Cycle:</strong> The “on” time versus “off” time in each pulse controls motor speed. Higher duty cycle = more power.</li>
+            <li><strong>Efficiency:</strong> PWM ensures smooth motor control with minimal energy loss.</li>
+        </ul>
+       
+
+    </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <div class="terminal-section">
+
+            <h2>Sensor Module Development</h2>
+    <p>As part of the sensor system development, I worked on creating software logic for sensor calibration, fault detection, and fail-safe mechanisms to ensure reliable sensor performance in various automotive conditions. Key contributions include:</p>
+    <ul>
+        <li><strong>Fault Detection:</strong> Designed software logic to detect sensor faults such as electrical failures, stuck readings, and validity cross-checks with nearby sensors.</li>
+        <li><strong>Calibration & Signal Processing:</strong> Developed algorithms to convert raw voltage values to calibrated sensor data. Included mathematical interpolation and signal conditioning filter design.</li>
+        <li><strong>Scenario-Based Validation:</strong> Ensured sensor readings aligned with expected vehicle behavior, such as verifying engine temperature increases with higher vehicle speed. Detected inconsistencies for potential sensor malfunctions.</li>
+        <li><strong>Fail-Safe Mechanisms:</strong> Implemented fallback calculations using nearby sensor data in case of sensor failure to maintain system safety and performance.</li>
+        <li><strong>Sensor Types:</strong> Worked with temperature, pressure, and oil level sensors, maintaining and developing sensor modules in Simulink.</li>
+    </ul>
+
+    </div>
+
+
+    <div class="terminal-section">
+<h2>Camtronic Valve Timing</h2>
+     <p>
+        <strong>Variable Valve Timing (VVT)</strong> in the context of <strong>Camtronic systems</strong> refers to a mechanism used in automotive engines to optimize performance and efficiency by varying the timing of valve opening and closing. Camtronic is a specific type of VVT technology utilized by <strong>Mercedes-Benz</strong>, allowing for both <strong>variable valve timing</strong> and <strong>valve lift control</strong>.
+    </p>
+
+    <h3>Personal Experience</h3>
+    <p>
+        As part of my work with Camtronic systems, I gained a deeper understanding of engine timing, <strong>stroics</strong>, and <strong>VVT injection</strong>. I explored variations in engine performance based on the number of cylinders and learned more about overall engine operation. My role involved software maintenance and development, focusing on implementing <strong>state machine design</strong> to manage condition-based switches within the system. This ensured smooth transitions between different valve timing and lift profiles, optimizing engine efficiency across various driving conditions.
+    </p>
+    <p>
+        In <strong>Mercedes Camtronic systems</strong>, this technology provides a finely-tuned balance between fuel economy and performance, depending on driving conditions, while contributing to smoother engine operation and compliance with stringent emission standards. If you're working with VVT and Camtronic modules for Mercedes, you're likely dealing with control algorithms and actuator commands to switch between the cam profiles.
+    </p>
+     <button class="details-btn" id="myBtn8">Link</button>
+    </div>
+
+
+
+
+    <!-- Modals for each button -->
+    <div id="myModal8" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+             <div id="videoContainer">
+           <iframe width="560" height="315" src="https://www.youtube.com/embed/CPQbJ_sZUsk?si=feogXSauCdFl_eiJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    <div id="contentContainer">
+    <h2>How It Works</h2>
+    <h3>1. Variable Valve Timing (VVT)</h3>
+    <ul>
+        <li><strong>Objective:</strong> The primary goal of VVT is to optimize airflow into and out of the engine by adjusting the timing of the intake and exhaust valves. This leads to improved fuel efficiency, better power output, and reduced emissions.</li>
+        <li><strong>Operation:</strong> In traditional engines, valve timing is fixed. However, in a VVT system, camshaft timing is adjusted dynamically based on engine speed, load, and other parameters, enabling the engine to adapt to different operating conditions like idle, acceleration, or cruising.</li>
+    </ul>
+
+    <h3>2. Camtronic System</h3>
+    <ul>
+        <li><strong>Dual Cam Profiles:</strong> Camtronic systems feature two different cam profiles on the camshaft—one for low-load conditions and one for high-load conditions. The system can switch between these profiles based on driving conditions.
+            <ul>
+                <li><strong>Low-load profile:</strong> Engaged when the vehicle is cruising or idling, minimizing valve lift and reducing fuel injection, which improves fuel economy.</li>
+                <li><strong>High-load profile:</strong> Activated when higher power is needed, such as during acceleration. It increases valve lift, allowing more air into the combustion chamber, thus boosting power.</li>
+            </ul>
+        </li>
+        <li><strong>Actuation:</strong> Camtronic systems employ an actuator to shift the camshaft between the two profiles, typically using <strong>electromechanical actuators</strong> that adjust the camshaft's position relative to the crankshaft.</li>
+    </ul>
+
+    <h3>3. Advantages</h3>
+    <ul>
+        <li><strong>Fuel Efficiency:</strong> By reducing valve lift during low-load conditions, the engine consumes less fuel.</li>
+        <li><strong>Power on Demand:</strong> The system can switch to the high-lift cam profile when more power is required, facilitating better airflow and increased power output.</li>
+        <li><strong>Lower Emissions:</strong> Optimizing valve timing and lift enhances combustion efficiency, resulting in reduced exhaust emissions.</li>
+    </ul>
+    </div>
+
+        </div>
+    </div>
+
+
+
+
+    <div id="chain" class="terminal-section">
+
+        <h1>Toolchain Process Flow</h1>
+
+This toolchain process outlines the structured approach followed during the development of the feature. Each step in this workflow ensures the seamless progression from capturing vehicle requirements to generating high-quality embedded software. Through a combination of model-based design, code generation, static analysis, and functional testing, the process ensures the final product meets industry standards for reliability, safety, and performance.
+
+<div class="process-step">
+    <img src="img/MBRDI/mbrdi-2.png" alt="Vehicle Requirement Icon">
+    <div>
+        <strong>1. Vehicle Requirement and Measurement</strong><br>
+        <em>Objective:</em> Gather and define all functional and non-functional requirements for the vehicle system.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Collaborate with stakeholders to identify specifications.</li>
+            <li>Measure performance metrics and constraints that the design must satisfy.</li>
+            <li>Document requirements in a clear and structured manner for reference in subsequent design stages.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="process-step">
+    <img src="img/MBRDI/Simulink.png" alt="Simulink TargetLink Icon">
+    <div>
+        <strong>2. Simulink TargetLink Design</strong><br>
+        <em>Objective:</em> Create a model-based design using Simulink and TargetLink to develop control algorithms and system behavior.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Develop system models that represent the vehicle's requirements.</li>
+            <li>Use TargetLink to generate production code from the Simulink model for real-time embedded applications.</li>
+            <li>Incorporate various blocks and subsystems for complex control logic.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="process-step">
+    <img src="img/MBRDI/MXAM.png" alt="MXAM Icon">
+    <div>
+        <strong>3. MXAM Model Check for Model Quality</strong><br>
+        <em>Objective:</em> Ensure that the developed Simulink model meets quality standards and best practices.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Run MXAM (Model eXpert Analysis Method) to analyze the model for compliance with guidelines.</li>
+            <li>Identify and correct model issues such as naming conventions, data type consistency, and structural integrity.</li>
+            <li>Generate reports highlighting areas of improvement and ensuring model readiness for code generation.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="process-step">
+    <img src="img/MBRDI/embeded-c.png" alt="Embedded C Code Icon">
+    <div>
+        <strong>4. Embedded C Code Generation</strong><br>
+        <em>Objective:</em> Convert the verified Simulink model into embedded C code suitable for deployment in the target hardware.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Utilize code generation tools within TargetLink to produce high-quality, efficient C code.</li>
+            <li>Follow coding standards (e.g., MISRA-C) to ensure safety and maintainability.</li>
+            <li>Validate the generated code against the model to ensure functional equivalence.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="process-step">
+    <img src="img/MBRDI/mbrdi-3.png" alt="Polyspace Icon">
+    <div>
+        <strong>5. Polyspace Static Code Checking</strong><br>
+        <em>Objective:</em> Perform static code analysis to identify potential run-time errors and ensure code quality.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Run Polyspace to detect coding issues such as buffer overflows, uninitialized variables, and potential deadlocks.</li>
+            <li>Review Polyspace reports to assess code reliability and safety.</li>
+            <li>Address identified issues to enhance the robustness of the code.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="process-step">
+    <img src="img/MBRDI/mbrdi-4.png" alt="Tessy Icon">
+    <div>
+        <strong>6. Tessy Check for Functional Testing</strong><br>
+        <em>Objective:</em> Conduct functional testing of the embedded code to verify that it meets specified requirements.<br>
+        <em>Activities:</em>
+        <ul>
+            <li>Use Tessy to automate testing processes, including unit tests and integration tests.</li>
+            <li>Analyze test results to confirm that the software behaves as expected under various scenarios.</li>
+            <li>Generate test reports documenting the outcomes and code coverage to demonstrate compliance with requirements.</li>
+        </ul>
+    </div>
+</div>
+
+    </div>
+
+
+
+    <div id="learning" class="terminal-section">
+
+        <h1>My Experience and Learning Journey</h1>
+ 
+
+    <p>In this role, I’ve gained extensive hands-on experience, particularly in the <strong>Simulink design</strong> phase, focusing on <strong>fault analysis</strong> within actuator and sensor systems. This has deepened my understanding of how these systems interact within larger automotive architectures. I’ve worked extensively with <strong>PID motor control</strong>, <strong>sensor signal conditioning</strong>, and <strong>fault detection</strong>, ensuring accurate data flow and system response. My exposure to the <strong>Camtronic system</strong> has further enhanced my knowledge of <strong>engine timing</strong> and the integration of <strong>electromechanical systems</strong>.</p>
+
+    <p>As part of <strong>fault analysis</strong>, I handled both <strong>electrical and mechanical aspects</strong> of fault conditions, utilizing methods such as freezing states and troubleshooting bugs based on <strong>functional and vehicle requirement analysis</strong>. This has refined my ability to diagnose issues from a holistic, high-level perspective.</p>
+
+    <p>On the technical side, I delved into <strong>pointer-based coding structures</strong> during <strong>TargetLink code generation</strong>, contributing to more efficient and scalable code. I also strengthened my skills in maintaining <strong>code quality</strong> by running <strong>static checks</strong> and adhering to <strong>MAAB guidelines</strong> using <strong>MXAM</strong>, while resolving <strong>Polyspace errors</strong> such as overflow issues.</p>
+
+    <p>Lastly, I conducted <strong>functional testing</strong> of embedded code using <strong>Tessy</strong>, gaining a comprehensive understanding of <strong>ECU handling</strong> and ensuring the seamless integration of variables across the entire automotive system.</p>
+
+
+    </div>
+
+
+
+
+     <div id="ino" class="terminal-section">
+
+   
+    <h1>Innovative Workflow Automation at Mercedes-Benz</h1>
+
+    <p>During my time at Mercedes-Benz, I led an innovation project focused on <strong>automation</strong> to significantly boost <strong>productivity</strong>. One key initiative was the development of a tool for <strong>MIL testing</strong>, where I automated the execution of <strong>Tessy test scenarios</strong> on Simulink models. This tool, created using <strong>MATLAB</strong>, streamlined the testing process, making it more efficient and allowing broader test coverage. The testing results were automatically compiled into <strong>HTML reports</strong> using <strong>Python</strong>, enhancing the overall testing feasibility and traceability.</p>
+
+    <p>Additionally, I worked on automating the <strong>Tessy test format creation</strong>, where the system could automatically generate test templates and identify bugs by referencing previous test sheets. This automation drastically reduced production time and helped optimize testing processes, particularly in complex scenarios involving multiple dependent variables.</p>
+
+    <p>These efforts contributed to significant <strong>process optimization</strong> and <strong>time savings</strong>, underscoring my ability to identify opportunities for improvement and deliver automated solutions within a high-paced engineering environment.</p>
+
+
+
+    </div>
+<div id="team" class="terminal-section">
+<h1>Team Acknowledgment</h1>
+
+<img src="img/MBRDI/mbrdi-5.png" alt="Description of the image" width="800">
+    <p>I am deeply grateful for the opportunity to work with an incredible team during my time at Mercedes-Benz. Under the leadership of my manager, <em>Changappa Ammanichanda</em>, I was constantly inspired to pursue innovation and learning. His motivational leadership made the experience highly rewarding.</p>
+
+    <p>Throughout this role, I had the chance to collaborate with various teams and feature leads, gaining diverse perspectives and skills. I also had the privilege of working with my colleagues on innovation projects that significantly enhanced our workflow and processes.</p>
+    <div class="circle-container">
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/changappa-ammanichanda-04947537/" target="_blank" class="circle-profile">
+            <img src="img/MBRDI/mbrdi-6.jpeg" alt="Profile 1">
+            <div class="profile-caption">Changappa Ammanichanda</div>
+        </a>
+
+    </div>
+    <h2>Actuators and Camtronic Systems</h2>
+    <p>Initially, I worked under the guidance of <strong>Sureshbabu K T</strong>, whose leadership focused not just on the workflow but also on deeply understanding the functionality of systems. Together with <strong>Mahantesh Kumbar</strong>, I developed a strong grasp of the design architecture and functionality of actuators. Their mentorship was instrumental in expanding my technical knowledge.</p>
+
+
+    <div class="circle-container">
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/sureshbabu-k-t-75a51176/" target="_blank" class="circle-profile">
+            <img src="img/MBRDI/mbrdi-7.jpeg" alt="Profile 1">
+            <div class="profile-caption">Sureshbabu K T</div>
+        </a>
+        
+        <!-- Profile 2 -->
+        <a href="https://www.linkedin.com/in/mahantesh-kumbar-3a044466/" target="_blank" class="circle-profile">
+            <img src="img/MBRDI/mbrdi-8.jpeg" alt="Profile 2">
+            <div class="profile-caption">Mahantesh Kumbar</div>
+        </a>
+        
+
+    </div>
+
+    <p>My colleagues <strong>Harshitha M D</strong> and <strong>Sourabh Patil</strong> were essential in creating a collaborative, classroom-like environment where we continuously learned from each other. Their support was invaluable in tackling challenges and enhancing our work in actuator control.</p>
+
+    <div class="circle-container">
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/harshitha-m-d-482962153/" target="_blank" class="circle-profile">
+            <img src="img/MBRDI/mbrdi-9.jpeg" alt="Profile 1">
+            <div class="profile-caption">Harshitha M D</div>
+        </a>
+        
+        <!-- Profile 2 -->
+        <a href="https://www.linkedin.com/in/sourabh-patil-aa034b142/" target="_blank" class="circle-profile">
+            <img src="img/MBRDI/mbrdi-10.jpeg" alt="Profile 2">
+            <div class="profile-caption">Sourabh Patil</div>
+        </a>
+        
+
+    </div>
+
+    <h2>Sensors</h2>
+    <p>Within the sensors team, I received tremendous support from <strong>Avanti Sarkar</strong>, <strong>Arpit Jain</strong>, <strong>Dhananjay Gokarn</strong>, and <strong>Netra Hebballi</strong>. They played a crucial role in my understanding of sensor modules and their integration. Working with them broadened my expertise in sensor systems and related technologies.</p>
+
+    <div class="circle-container">
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/avanti-sarkar-15179811a/" target="_blank" class="circle-profile">
+            <img src="img/MBRDI/mbrdi-11.jpeg" alt="Profile 1">
+            <div class="profile-caption"> Avanti Sarkar</div>
+        </a>
+        
+        <!-- Profile 2 -->
+        <a href="https://www.linkedin.com/in/arpit-jain-aj/" target="_blank" class="circle-profile">
+            <img src="img/MBRDI/mbrdi-12.jpeg" alt="Profile 2">
+            <div class="profile-caption"> Arpit Jain</div>
+        </a>
+        
+        <!-- Profile 3 -->
+        <a href="https://www.linkedin.com/in/dhananjay-gokarn-707b84216/" target="_blank" class="circle-profile">
+            <img src="img/MBRDI/mbrdi-13.jpeg" alt="Profile 2">
+            <div class="profile-caption"> Dhananjay Gokarn</div>
+        </a>
+
+
+
+    </div>
+
+    <h2>Innovation Project</h2>
+    <p>As part of our drive for innovation, we took the initiative to develop an automation tool with the encouragement of management. This project involved regular team meetings with <strong>Smriti</strong> and <strong>Sourabh</strong>, focusing on enhancing productivity through automation. The collaboration significantly improved our workflow and was a major step forward in boosting efficiency.</p>
+        <div class="circle-container">
+        <!-- Profile 1 -->
+        <a href="https://www.linkedin.com/in/smriti-ashish-028/?originalSubdomain=in" target="_blank" class="circle-profile">
+            <img src="img/MBRDI/mbrdi-14.jpeg" alt="Profile 1">
+            <div class="profile-caption">Smriti A.</div>
+        </a>
+        
+        <!-- Profile 2 -->
+        <a href="https://www.linkedin.com/in/sourabh-patil-aa034b142/" target="_blank" class="circle-profile">
+            <img src="img/MBRDI/mbrdi-10.jpeg" alt="Profile 2">
+            <div class="profile-caption">Sourabh Patil</div>
+        </a>
+
+
+
+    </div>
+
+    <script>
+        // Get all modals
+        const modals = [
+            document.getElementById("myModal1"),
+            document.getElementById("myModal2"),
+            document.getElementById("myModal3"),
+            document.getElementById("myModal4"),
+            document.getElementById("myModal5"),
+            document.getElementById("myModal6"),
+            //document.getElementById("myModal7"),
+             document.getElementById("myModal8"),
+        ];
+
+        // Get all buttons
+        const buttons = [
+            document.getElementById("myBtn1"),
+            document.getElementById("myBtn2"),
+            document.getElementById("myBtn3"),
+            document.getElementById("myBtn4"),
+            document.getElementById("myBtn5"),
+            document.getElementById("myBtn6"),
+            //document.getElementById("myBtn7"),
+            document.getElementById("myBtn8"),
+        ];
+
+        // Get the <span> elements that close the modals
+        const spans = document.getElementsByClassName("close");
+
+        // Add click event to each button to open the corresponding modal
+        buttons.forEach((button, index) => {
+            button.onclick = function() {
+                modals[index].style.display = "block";
+            }
+        });
+
+        // When the user clicks on <span> (x), close the modals and stop the video
+        Array.from(spans).forEach((span, index) => {
+            span.onclick = function() {
+                modals[index].style.display = "none";
+                const videoFrames = modals[index].querySelectorAll('iframe');
+                videoFrames.forEach(video => {
+                    video.src = video.src;  // Reset the video by re-assigning the src attribute
+                });
+            }
+        });
+
+        // When the user clicks anywhere outside of the modal, close it and stop the video
+        window.onclick = function(event) {
+            modals.forEach((modal, index) => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    const videoFrames = modal.querySelectorAll('iframe');
+                    videoFrames.forEach(video => {
+                        video.src = video.src;  // Reset the video
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
