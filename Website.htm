@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Design</title>
+    <style>
+
+        .info-button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px; /* Space between body and info */
+        }
+
+        /* Project Info */
+        .project-info {
+            margin-top: 10px; /* This controls the spacing between the project info and the card body */
+            font-size: 12px;
+            color: #cccccc; /* Lighter color for contrast */
+            border-top: 1px solid #444; /* Optional separator line */
+            padding-top: 5px; /* Reduced padding to tighten spacing */
+        }
+
+        /* Retro Button Style */
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px; /* Space above buttons */
+            gap: 10px;
+        }
+
+        .retro-button {
+            background-color: #2b2b2b;
+            color: #00ff00;
+            padding: 10px 20px;
+            border: 2px solid #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 0 5px #00ff00;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .retro-button:hover {
+            background-color: #00ff00;
+            color: #1e1e1e;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+        }
+
+                strong {
+            color: green;
+        }
+
+                .process-step {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .process-step img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* Basic styles for the page */
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #2e2e2e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #1e1e1e;
+            padding: 20px;
+            position: fixed;
+        }
+
+        .sidebar img {
+            display: block;
+            width: 30%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #2b2b2b;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .sidebar a:hover {
+            background-color: #00ff00;
+            color: #1e1e1e;
+        }
+
+
+        .terminal-section {
+            color: #ffffff; 
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            padding: 20px;
+            margin: 20px auto;
+            margin-left: 30px; /* Ensure space from sidebar */
+            margin-top: 20px; /* Add space from top */
+        }
+
+        /* Button styles */
+        /* Button styles */
+/* Button styles */
+.details-btn {
+    background-color: #2b2b2b;
+    color: #00ff00;
+    padding: 5px 5px; /* Keep the same height and width */
+    border: 2px solid #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 0 5px #00ff00;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border-radius: 5px; /* You can keep or remove this depending on your preference */
+    margin-top: 10px;
+    margin-right: 5px; /* Spacing between buttons */
+}
+
+
+
+        .details-btn:hover {
+            background-color: #00ff00;
+            color: #1e1e1e;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px; 
+        }
+        .modal-content {
+            background-color: #1e1e1e;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 90%; 
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            display: flex; /* Flexbox for layout */
+                max-height: 80vh; /* Limit the height */
+
+            overflow-y: auto; /* Enable scrolling */
+
+        }
+        .modal-content-1 {
+            background-color: #1e1e1e;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 90%; 
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            overflow-y: auto; /* Enable scrolling */
+                max-height: 80vh; /* Limit the height */
+
+
+
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+                #videoContainer {
+            flex: 1; /* Take up 1 part of the space */
+            margin-right: 20px; /* Space between video and content */
+        }
+        #contentContainer {
+            flex: 2; /* Take up 2 parts of the space */
+        }
+
+
+
+
+    .circle-container {
+        display: flex;
+        justify-content: left   ; /* Align the circles closer */
+        gap: 15px; /* Adjust spacing between the circles */
+        margin-top: 20px;
+    }
+
+    .circle-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none; /* Remove underline for links */
+    }
+
+    .circle-profile img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid #ffffff;
+        transition: transform 0.3s ease;
+    }
+
+    .circle-profile:hover img {
+        transform: scale(1.1); /* Enlarge image on hover */
+    }
+
+    .profile-caption {
+        color: #ffffff;
+        margin-top: 8px;
+        text-align: center;
+        font-size: 14px;
+        width: 100%;
+        padding: 0 5px;
+        word-wrap: break-word; /* Ensure long captions wrap */
+    }
+
+    .circle-profile:hover .profile-caption {
+        color: #ffcc00; /* Optional: Change caption color on hover */
+    }
+
+    
+
+    </style>
+</head>
+<body>
+
+    <div id="intro" class="terminal-section">
+
+        <h1>Introduction</h1>
+I have designed and developed multiple websites, blending various patches of information and utilizing both existing templates and custom code. In some instances, I’ve integrated AI tools to streamline the design process. Despite any gaps in formal web design knowledge, each website has been fully functional and visually appealing, tailored to meet specific needs. My projects range from professional portfolios to resource hubs for storing and accessing Python scripts for tasks like automation, Tkinter GUI development, PDF conversion, and more. Whether it's showcasing work or creating a platform for easy information access, each site has been purposefully crafted to serve a unique objective.
+    
+
+    </div>
+    <div id="feature" class="terminal-section">
+
+        <h1>Portfolio for Dr. Swetha Bhagwat (Physicist)</h1>
+        
+        I created a professional portfolio for Dr. Swetha Bhagwat, a researcher, by customizing an existing HTML template to meet her specific requirements.
+ <br>
+        <iframe src="https://swethapb.github.io/Portfolio/" width="1000" height="600" ></iframe>
+
+        <div class="button-container">
+            <a href="https://swethapb.github.io/Portfolio/" target="_blank" class="retro-button">GitHub</a>
+        </div>
+
+    </div>
+
+
+
+    <div id="feature" class="terminal-section">
+
+        <h1>Personal Portfolio</h1>
+        <br>
+ I designed my own portfolio to showcase my work, skills, and experience. It serves as a comprehensive record of my professional journey, presented in a clean and organized format.
+        <iframe src="https://ganeshb15.github.io/PrabhatBhagwat/" width="1000" height="600" ></iframe>
+
+        <div class="button-container">
+            <a href="https://ganeshb15.github.io/PrabhatBhagwat/" target="_blank" class="retro-button">GitHub</a>
+        </div>
+
+    </div>
+    <div id="feature" class="terminal-section">
+
+        <h1>Art Portfolio for Prabhat Bhagwat</h1>
+        This is an art portfolio I developed to provide a cohesive platform for showcasing the artwork of Prabhat Bhagwat. The design highlights the artist's creations in an engaging and accessible way.
+        <br>
+        <iframe src="https://ganeshb15.github.io/Portfolio/" width="1000" height="600" ></iframe>
+
+        <div class="button-container">
+            <a href="https://ganeshb15.github.io/Portfolio/" target="_blank" class="retro-button">GitHub</a>
+        </div>
+
+    </div>
+    <div id="feature" class="terminal-section">
+
+        <h1>Python Resource Hub Website Design</h1>
+        I designed a website as a nested mini-map for Python concepts. It includes useful automation scripts, syntax references, and examples for modules like Tkinter (for GUI development), PDF conversion, pandas, and more.
+        <br>
+        <iframe src="https://ganeshb15.github.io/PythonQuickCmd/" width="1000" height="600" ></iframe>
+
+        <div class="button-container">
+            <a href="https://ganeshb15.github.io/PythonQuickCmd/" target="_blank" class="retro-button">GitHub</a>
+        </div>
+
+    </div>
+    <div id="feature" class="terminal-section">
+
+        <h1>Website for CA Firm</h1>
+         I designed a website for a Chartered Accountant firm, which they use for client showcasing. This project involved merging several HTML templates to create a functional and visually appealing site.
+         <br>
+        <iframe src="https://satishhegdeco.github.io/satishhegde.co/" width="1000" height="800" ></iframe>
+
+        <div class="button-container">
+            <a href="https://satishhegdeco.github.io/satishhegde.co/" target="_blank" class="retro-button">GitHub</a>
+        </div>
+
+    </div>
+
+
+   
+    <script>
+        // Get all modals
+        const modals = [
+            document.getElementById("myModal1"),
+            document.getElementById("myModal2"),
+            document.getElementById("myModal3"),
+            //document.getElementById("myModal4"),
+            //document.getElementById("myModal5"),
+            //document.getElementById("myModal6"),
+            //document.getElementById("myModal7"),
+            // document.getElementById("myModal8"),
+        ];
+
+        // Get all buttons
+        const buttons = [
+            document.getElementById("myBtn1"),
+            document.getElementById("myBtn2"),
+            document.getElementById("myBtn3"),
+            //document.getElementById("myBtn4"),
+            //document.getElementById("myBtn5"),
+            //document.getElementById("myBtn6"),
+            //document.getElementById("myBtn7"),
+            //document.getElementById("myBtn8"),
+        ];
+
+        // Get the <span> elements that close the modals
+        const spans = document.getElementsByClassName("close");
+
+        // Add click event to each button to open the corresponding modal
+        buttons.forEach((button, index) => {
+            button.onclick = function() {
+                modals[index].style.display = "block";
+            }
+        });
+
+        // When the user clicks on <span> (x), close the modals and stop the video
+        Array.from(spans).forEach((span, index) => {
+            span.onclick = function() {
+                modals[index].style.display = "none";
+                const videoFrames = modals[index].querySelectorAll('iframe');
+                videoFrames.forEach(video => {
+                    video.src = video.src;  // Reset the video by re-assigning the src attribute
+                });
+            }
+        });
+
+        // When the user clicks anywhere outside of the modal, close it and stop the video
+        window.onclick = function(event) {
+            modals.forEach((modal, index) => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    const videoFrames = modal.querySelectorAll('iframe');
+                    videoFrames.forEach(video => {
+                        video.src = video.src;  // Reset the video
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

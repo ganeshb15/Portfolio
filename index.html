@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floating Terminal Cards with Buttons</title>
+    <title>Ganesh Bhagwat</title>
     <style>
 
         /* Buttons for filtering */
@@ -137,8 +137,8 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             width: 72%;
             padding: 20px;
-             margin-top: 20px;
-            margin-bottom: 20px;
+             margin-top: 10px;
+            margin-bottom:10px;
               margin-left: 320px; /* Adjust the value to set the desired left margin */
 
 
@@ -155,7 +155,7 @@ body {
 
 
         .content {
-            padding: 20px;
+            padding: 5px;
               margin: 0 0 0 300px; /* Top, Right, Bottom, Left */
         }
 
@@ -349,8 +349,8 @@ body {
             overflow: hidden;
             background-color: #1e1e1e; /* Dark background for content */
             color: #ffffff; /* White text */
-                        margin-bottom: 10px;
-                        margin-left: 350px;
+            margin-bottom: 10px;
+            margin-left: 350px;
 
         }
         .sub {
@@ -434,15 +434,38 @@ body {
             color: #00ff00; /* Green text for terminal style */
             font-family: monospace; /* Monospace font for terminal style */
         }
+        .hidden {
+    display: none;
+    }
+#showMore {
+    padding: 5px 10px; /* Adjust the padding */
+    font-size: 14px;   /* Adjust the font size */
+    border: 2px solid #000; /* Optional: adjust the border */
+    border-radius: 5px;  /* Adjust the corner roundness */
+    background-color: #00ff00; /* Set a background color */
+    color: #000; /* Set the text color */
+    cursor: pointer;
+    width: 120px; /* Fixed width of the button */
+    text-align: center; /* Centers the text inside the button */
+}
+
+#showMore:hover {
+    background-color: #ddd; /* Optional: change color on hover */
+}
+
+
+
     </style>
 </head>
 <body>
     <div class="sidebar">
         <img src="img/profile.jpeg" alt="Profile Image">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Projects</a>
-        <a href="#">Contact</a>
+        <a href="#home">Home</a>
+        <a href="#ed">Education</a>
+        <a href="#PE">Professional Experience</a>
+        <a href="#pj">Project</a>
+        <a href="#pub">Publications</a>
+
     </div>
 
     <div  class="terminal-section">
@@ -451,205 +474,89 @@ body {
             <div class="yellow"></div>
             <div class="green"></div>
         </div>
-        <h2>About Me</h2>
-        <p>Welcome to my portfolio! I'm a software developer passionate about creating efficient and scalable solutions. Here, you'll find a collection of my projects and more about my experience.</p>
+         <h1 id="home">Welcome to My Portfolio!</h1>
+    <p>Hi, I’m <strong>Ganesh Bhagwat</strong>. I have recently graduated with a Master’s in <strong>Electronic Engineering</strong> from <strong>Nottingham Trent University</strong>. I bring significant experience in <strong>embedded system design for automotive applications</strong>, particularly in <strong>control systems</strong> and <strong>Simulink/Stateflow</strong>. My expertise encompasses both the design and development of <strong>Simulink models</strong> and <strong>Fixed-Point embedded code</strong>, with projects that have progressed through testing environments to final implementation.</p>
+    <br>
+    <p>I have also contributed to several research publications, showcasing my motivation for innovative solutions. With a strong interest in delving deeper into embedded systems, I am eager to advance my career in this field.I am currently open to job opportunities, and I welcome any project collaborations or learning opportunities. Please feel free to contact me—I am enthusiastic about connecting and supporting others in any way I can!</p>
+
     </div>
-
-    <div class="content">
-        <div class="card-section">
-            <div class="terminal-card">
-                <div class="terminal-header">
-                    <div class="red"></div>
-                    <div class="yellow"></div>
-                    <div class="green"></div>
-                </div>
-                <div class="terminal-body">
-                    <span class="terminal-command">$ Mining Inspection Bot: </span>
-                    <img src="img/Mine.png" alt="Project Image">
-                        This prototype "Mining Inspection Bot" is designed for real-time monitoring in hazardous underground environments. Equipped with sensors and wireless communication modules (WiFi and Bluetooth), it efficiently collects and transmits data, ensuring reliable operation even in challenging conditions. The bot’s modular design supports scalability, enhancing safety by reducing human exposure to risks in mining.
-                </div>     
-                <div class="info-button-container">
-                    <div class="project-info">
-                        <p><strong>Data:</strong> Analytical Data</p>
-                        <p><strong>Duration:</strong> 2 Months</p>
-                    </div>
-                    <div class="button-container">
-                        <a href="#" class="retro-button">Details</a>
-                        <a href="#" class="retro-button">GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="terminal-card">
-                <div class="terminal-header">
-                    <div class="red"></div>
-                    <div class="yellow"></div>
-                    <div class="green"></div>
-                </div>
-                <div class="terminal-body">
-                    <span class="terminal-command">$ Forest Data Structure: </span>
-                    <img src="img/tree.webp" alt="Project Image">
-                    This project introduces a novel approach to representing multi-layer forest data structures using static arrays. By optimizing memory usage and simplifying code, it provides efficient tree operations like insertion, deletion, and search. Applications include interdisciplinary fields such as engineering, medicine, and aviation. For more details, visit the Git page or install via pip: `pip install forest-visualization==0.1.3`.
-                </div>
-                <div class="info-button-container">
-                    <div class="project-info">
-                        <p><strong>Data:</strong> Example Data</p>
-                        <p><strong>Duration:</strong> 1 Month</p>
-                    </div>
-                    <!-- Button Container -->
-                    <div class="button-container">
-                        <a href="#" class="retro-button">Details</a>
-                        <a href="#" class="retro-button">GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="terminal-card">
-                <div class="terminal-header">
-                    <div class="red"></div>
-                    <div class="yellow"></div>
-                    <div class="green"></div>
-                </div>
-                <div class="terminal-body">
-                    <span class="terminal-command">$  Road Condition Monitoring and Driver Behavior Analysis: </span>
-                    <img src="img/5385622.png" alt="Project Image">
-                    This project addresses critical road issues in India, where over 50% of accidents are linked to poor road conditions. It focuses on detecting road anomalies like potholes using smartphone accelerometers, measuring acceleration in three dimensions. By integrating this data with real-time vehicle information from On-Board Diagnostics (OBD) systems, the project enables comprehensive analysis of road conditions and driver behavior. Potential applications include enhancing fuel efficiency, monitoring traffic violations, managing fleets, and providing emergency services. 
-                </div>
-                <div class="info-button-container">
-                    <div class="project-info">
-                        <p><strong>Data:</strong> Example Data</p>
-                        <p><strong>Duration:</strong> 1 Month</p>
-                    </div>
-                    <!-- Button Container -->
-                    <div class="button-container">
-                        <a href="#" class="retro-button">Details</a>
-                        <a href="#" class="retro-button">GitHub</a>
-                    </div>
-                </div>
-            </div>
+   
+    <h2 id="ed" class="terminal-section">Education
 
 
-
-                        <div class="terminal-card">
-                <div class="terminal-header">
-                    <div class="red"></div>
-                    <div class="yellow"></div>
-                    <div class="green"></div>
-                </div>
-                <div class="terminal-body">
-                    <span class="terminal-command">$  MiniReactis: Testing Made Easy: </span>
-                    <img src="img/11676391.png" alt="Project Image">
-                    MiniReactis simplifies the testing of embedded control systems during the Software-in-the-Loop (SIL) phase. The tool facilitates the execution of multiple test cases for both MATLAB models and C code, capturing outputs for comprehensive analysis. It generates HTML reports that compare model outputs with code outputs, providing clear insights into differences and code coverage. With its unique features, MiniReactis enhances the efficiency and effectiveness of the testing process, making it an invaluable resource for developers.
-                </div>
-                <div class="info-button-container">
-                    <div class="project-info">
-                        <p><strong>Data:</strong> Example Data</p>
-                        <p><strong>Duration:</strong> 1 Month</p>
-                    </div>
-                    <!-- Button Container -->
-                    <div class="button-container">
-                        <a href="#" class="retro-button">Details</a>
-                        <a href="#" class="retro-button">GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <!-- Add more terminal cards as needed -->
-        </div>
-    </div>
-
-    <h2 class="terminal-section">Publications</h2>
-
-
-
- <button type="button" class="collapsible1">
-        <div class="sub">Separation of speech and music using temporal-spectral features and neural classifiers</div>
-        <span style="color: #cccccc;"> Feb 03, 2023&#8226; Springer<br>Omkar.S &#8226;  Anirban .B &#8226; Ganesh.B </span>
-    </button>
-    <div class="content1">
-        <p>The paper explores the separation of speech and music, essential for audio processing. It highlights distinct patterns in their spectrograms, enhanced by Sobel edge kernels and Mel-spectrograms. A dataset from "All India Radio" was created, featuring separate and overlapping audio segments in various languages. Different input features were extracted and fed to classifiers, with convolutional neural networks and MFCC-delta-RNN methods yielding the best accuracy. The method demonstrated consistent performance across Bengali, Punjabi, and Tamil, successfully classifying audio with overlapping speech and music.  </p>
-        <div class="info-button-container">
-            <div class="project-info">
-                <p><strong>Data:</strong> 20-09-2020</p>
-                <p><strong>Duration:</strong> 1 Year</p>
-            </div>
-            <div class="button-container">
-                <a href="#" class="retro-button">Details</a>
-                <a href="#" class="retro-button">GitHub</a>
-            </div>
-        </div>
-    </div>
-
-
+    
+    </h2>
     <button type="button" class="collapsible1">
-        <div class="sub">Novel Static Multi-Layer Forest Approach and Its Applications</div>
-        <span style="color: #cccccc;">Oct 20, 2021 &#8226; MDPI<br>Ganesh.B &#8226; Shristi.K &#8226; Vaishnavi.P &#8226; Adrian Marius.D</span>
+        <div class="header">
+    <img src="img/NTU.png" alt="Company Logo" class="logo">
+    
+    <!-- Wrapper for company name and title -->
+    <div class="company-info">
+        <span class="company-name">
+
+Nottingham Trent University
+, England</span>
+        <span class="terminal-command">MSc (Electronic Engineering)</span>
+    </div>
+    
+        <span class="duration">Sep 2023 - Jan 2025</span>
+    </div>
     </button>
     <div class="content1">
-        <p>The paper discusses a novel method for representing multi-layer forest data structures using static arrays, which improves flexibility and reduces storage space compared to dynamic linked lists. It introduces various tree operations, a unique data compression algorithm, and a migration strategy from traditional to proposed structures. This new approach enhances memory optimization and code complexity, applicable across fields like engineering and medicine. Additionally, it addresses practical applications in Simulink debugging and forest visualization. </p>
-        <div class="info-button-container">
-            <div class="project-info">
-                <p><strong>Data:</strong> 20-09-2020</p>
-                <p><strong>Duration:</strong> 1 Year</p>
-            </div>
-            <div class="button-container">
-                    <button class="open-btn retro-button" onclick="openPopup('popup9')">Details</button>
-                    <button class="open-btn retro-button" onclick="openPopup('popup10')">Paper</button>
-            </div>
-        </div>
+           <h3>Coursework Overview</h3>
+    <p>I have consistently achieved <strong>distinction</strong> overall, including in all individual coursework to date. Among the fundamental courses I've completed, the following are particularly noteworthy:</p>
+    <ul>
+        <li><strong>Embedded System Design</strong>: Networking Hub Design and IoT Project Submission</li>
+        <li><strong>Signal Processing and Communication</strong></li>
+        <li><strong>Digital Control System</strong>: Control and Filter Design</li>
+        <li><strong>Research Thesis Evaluation</strong>: 'BreadboardScript: High-Level Language for Circuit Design'</li>
+    </ul>
+
+
+    </div>
+   <button type="button" class="collapsible1">
+        <div class="header">
+    <img src="img/manipla.png" alt="Company Logo" class="logo">
+    
+    <!-- Wrapper for company name and title -->
+    <div class="company-info">
+        <span class="company-name">
+
+Manipal Institute of Technology
+, India</span>
+        <span class="terminal-command">B.Tech (Electrical and Electronic Engineering)</span>
+    </div>
+    
+        <span class="duration">Jan 2014 - July 2018</span>
+    </div>
+    </button>
+    <div class="content1">
+            <h3>Bachelor's Degree Overview</h3>
+    <p>I completed my Bachelor's degree at <strong>Manipal Institute of Technology</strong> in Manipal, India, where I achieved a CGPA of <strong>7.30/10</strong>. Throughout my studies, I undertook a variety of courses across <strong>eight semesters</strong>, each comprising approximately six courses. Some noteworthy and relevant courses include:</p>
+    <ul>
+        <li><strong>Problem Solving in Computer Science</strong></li>
+        <li><strong>Microcontroller Lab</strong></li>
+        <li><strong>Advanced Signal Processing</strong></li>
+        <li><strong>Computer Architecture</strong></li>
+        <li><strong>Data Structures and Algorithms</strong></li>
+        <li><strong>Real-Time Systems</strong></li>
+    </ul>
+
+
     </div>
 
 
 
- <button type="button" class="collapsible1">
-        <div class="sub">Rotating Acoustic Reflector Parameter Trade-Off for Near-Outdoor Audio Event Detection</div>
-        <span style="color: #cccccc;"> May 25, 2021&#8226; Springer<br>Ganesh.B &#8226;  Sangeeth .J &#8226; Anirban.B </span>
-    </button>
-    <div class="content1">
-        <p>The paper addresses limitations in current visual surveillance systems, particularly in low-light and non-line-of-sight conditions, proposing an audio surveillance system as a complementary solution. It details the development of a low-cost rotating parabolic reflector microphone designed for outdoor audio recording, optimizing size, speed, sensitivity, and directionality. Enhancements in reflector shape and microphone type improve audio signal capture. The study demonstrates the effectiveness of this audio sensor system for small-scale audio event classification using a hierarchical approach. </p>
-        <div class="info-button-container">
-            <div class="project-info">
-                <p><strong>Data:</strong> 20-09-2020</p>
-                <p><strong>Duration:</strong> 1 Year</p>
-            </div>
-            <div class="button-container">
-                <a href="#" class="retro-button">Details</a>
-                <a href="#" class="retro-button">GitHub</a>
-            </div>
-        </div>
-    </div>
-
- <button type="button" class="collapsible1">
-        <div class="sub">Trigger-Based Pothole Detection Using Smartphone and OBD-II</div>
-        <span style="color: #cccccc;"> July 04, 2020&#8226; IEEEXplore<br>K.S. Ashwini &#8226;  Ganesh.B &#8226; Thrilochan.S&#8226; Prithvi Sekhar.P </span>
-    </button>
-    <div class="content1">
-        <p>The paper discusses a low-cost approach for detecting and locating potholes using a smartphone and an OBD-II module. It combines vision data, sensor data, and OBD data to identify road abnormalities affecting vehicle safety and ride quality. Two methods—image-triggered and data-triggered—are proposed for recognizing potholes, with results cross-validated between both methods. This approach aims to enhance road maintenance by providing effective monitoring of road conditions. </p>
-        <div class="info-button-container">
-            <div class="project-info">
-                <p><strong>Data:</strong> 20-09-2020</p>
-                <p><strong>Duration:</strong> 1 Year</p>
-            </div>
-            <div class="button-container">
-                <a href="#" class="retro-button">Details</a>
-                <a href="#" class="retro-button">GitHub</a>
-            </div>
-        </div>
-    </div>
-
-
-
-    <h2 class="terminal-section">Professional Experience
+    <h2 id="PE" class="terminal-section">Professional Experience
 
     <!-- Buttons for filtering -->
-    <div class="filter-btns">
+    
         <button class="filter-btn retro-button" onclick="showExperience('all')">All</button>
         <button class="filter-btn retro-button" onclick="showExperience('full-time')">Full-Time Positions</button>
         <button class="filter-btn retro-button" onclick="showExperience('internship')">Internships</button>
-    </div>
+    
     </h2>
+
 <div class="experience-block full-time">
    <div  class="terminal-section">
             <div class="terminal-header">
@@ -663,7 +570,7 @@ body {
                     <span class="company-name">Nottingham Trent University, Nottingham, England</span>
                     <span class="terminal-command">Research Assistant for Auto-Pod project</span>
                 </div>
-                <span class="duration">Jan 2017 - May 2017</span>
+                <span class="duration">Apr 2024 - Present</span>
             </div>
         <h1></h1>
         <p>Conducted research on security vulnerabilities in autonomous vehicles for the Auto-Pod project, focusing on identifying and addressing vulnerabilities in embedded front-facing sensors, operating systems, and the Robot Operating System (ROS). Analyzed sensor-based issues and network vulnerabilities to enhance overall system security.</p>
@@ -699,7 +606,7 @@ body {
         <span class="terminal-command">Automotive Software Engineer</span>
     </div>
     
-        <span class="duration">Jan 2017 - May 2017</span>
+        <span class="duration">Apr 2021 - Sept 2023</span>
     </div>
 
             <h1></h1>
@@ -744,7 +651,7 @@ body {
         <span class="terminal-command">Associate Technical Engineer</span>
     </div>
     
-        <span class="duration">Jan 2017 - May 2017</span>
+        <span class="duration">Oct 2020 - Apr 2021</span>
     </div>
 
             <h1></h1>
@@ -777,7 +684,7 @@ body {
         <span class="terminal-command">Software Engineer</span>
     </div>
     
-        <span class="duration">Jan 2017 - May 2017</span>
+        <span class="duration">Aug 2018 - Oct 2020</span>
     </div>
 
             <h1></h1>
@@ -788,6 +695,12 @@ body {
                 <button class="skill-btn">Embedded C</button>
                 <button class="skill-btn">Fixed Point Processors Coding </button>
                 <button class="skill-btn">Testing MC/DC Coverage</button>
+                <button class="skill-btn">Reactis for C </button>
+                <button class="skill-btn">Verification & Validation</button>
+                <button class="skill-btn">Reactis for C</button>
+                    <button class="skill-btn">PCLint</button>
+                    <button class="skill-btn">MISRA C</button>
+
             </div>
 
 
@@ -797,16 +710,26 @@ body {
         </div>
         <h3><u>Embedded C Developer for Floating Point Processors (FLP)</u></h3>
         <p>Conducted code generation for embedded C code tailored for Floating Point Processors (FLP) and executed Simulink migration of engine control models to ensure AUTOSAR compliance. Performed functional testing of models and code across various architectures to verify performance and reliability.</p>
-                <button class="skill-btn">HTML</button>
-                <button class="skill-btn">CSS</button>
-                <button class="skill-btn">JavaScript</button>
+                <button class="skill-btn">Floating Point Processors (FLP)</button>
+                <button class="skill-btn">AUTOSAR</button>
+                <button class="skill-btn">Testing</button>
+                <button class="skill-btn">PT-1 Filter</button>
+                    <button class="skill-btn">BTC EmbeddedTester</button>
+                    <button class="skill-btn">MXAM</button>
+                    <button class="skill-btn">MIL</button>
+
 
         <h1></h1>
         <h3><u>Research Vehicle Diagnosis  </u></h3>
         <p>Developed an online CI/CD workflow utilizing Travis CI, Code Climate, and GitHub, while designing coding standards and architecture flow. Created a road profile algorithm through image and data processing and implemented a video processing algorithm for pothole detection using Python and OpenCV. Additionally, contributed to course creation for MATLAB, SIMULINK, SIL, and automation processes.</p>
-        <button class="skill-btn">HTML</button>
-        <button class="skill-btn">CSS</button>
-        <button class="skill-btn">JavaScript</button>
+        <button class="skill-btn">CI/CD</button>
+        <button class="skill-btn">Travis CI</button>
+        <button class="skill-btn">GitHub</button>
+        <button class="skill-btn">OpenCV</button>
+        <button class="skill-btn">Python</button>
+        <button class="skill-btn">Vehicle Diagnostic</button>
+        <button class="skill-btn">OBD</button>
+        <button class="skill-btn">Simulink</button>
 
 
         <h1></h1>
@@ -814,9 +737,13 @@ body {
         <p>Developed tools for Simulink model automation utilizing m-scripts and automated QAC and Polyspace report analysis through M-Script, VBA macros, and VB Script. Additionally, created tools for XML manipulation to enhance Polyspace functionality.</p>
  <div class="skills">
             <div>
-                <button class="skill-btn">HTML</button>
-                <button class="skill-btn">CSS</button>
-                <button class="skill-btn">JavaScript</button>
+                <button class="skill-btn">MATLAB</button>
+                <button class="skill-btn">TPT</button>
+                <button class="skill-btn">Polyspace</button>
+                <button class="skill-btn">QAC</button>
+                <button class="skill-btn">VBA</button>
+                <button class="skill-btn">VBS</button>
+
             </div>
     <button class="open-btn retro-button" onclick="openPopup('popup3')">More Details</button>
         </div>
@@ -850,9 +777,15 @@ body {
             <p>Built a Rotatic Acoustic Reflector based audio sensor for enhanced sensing in near outdoor situations. The system was built with a server and multiple Rasberry pi Setup for live audio streaming and data collection. Also came up with an audio classification algorithm for the same as well as localization of the sound.Worked in a research project of "Audio Event Detection and Localization". Built a Rotatic Acoustic Reflector based audio sensor for enhanced sensing in near outdoor situations. The system was built with a server and multiple Rasberry pi Setup for live audio streaming and data collection. Also came up with an audio classification algorithm for the same as well as localization of the sound. </p>
                     <div class="skills">
             <div>
-                <button class="skill-btn">HTML</button>
-                <button class="skill-btn">CSS</button>
-                <button class="skill-btn">JavaScript</button>
+                <button class="skill-btn">Gaussian mixture model (GMM) </button>
+                <button class="skill-btn">Hidden Markov Model(HMM)</button>
+                <button class="skill-btn">Audio Processing</button>
+                <button class="skill-btn">Python</button>
+                <button class="skill-btn">Mic Calibaration</button>
+                <button class="skill-btn">Rasberry pi-Server</button>
+                <button class="skill-btn">Stepper Motor Control</button>
+                <button class="skill-btn">Sound Localization</button>
+
             </div>
     <button class="open-btn retro-button" onclick="openPopup('popup4')">More Details</button>
         </div>
@@ -883,16 +816,20 @@ Mangalore Refinery and Petrochemicals Limited
 Instrumentation and Control Department</span>
     </div>
     
-        <span class="duration">Jan 2017 - May 2017</span>
+        <span class="duration">May 2017 - June 2017</span>
     </div>
 
             <h1></h1>
             <p>During an internship at MRPL (Mangalore Refinery and Petrochemicals Limited) under the Instrumentation and Control Department, valuable hands-on experience was gained in industrial process control. The role involved monitoring critical parameters such as temperature, pressure, and flow using various sensors and applying control algorithms like PID to maintain optimal system performance. Additionally, work included understanding the operation and installation of different valve types, such as globe and butterfly valves, for fluid regulation, and contributing to the integration of control systems to enhance safety and efficiency in refinery operations. </p>
                     <div class="skills">
             <div>
-                <button class="skill-btn">HTML</button>
-                <button class="skill-btn">CSS</button>
-                <button class="skill-btn">JavaScript</button>
+                <button class="skill-btn">Control System</button>
+                <button class="skill-btn">PID Controller</button>
+                <button class="skill-btn">Temperature Sensors</button>
+                <button class="skill-btn">Pressure Sensors</button>
+                <button class="skill-btn">Flow Sensors</button>
+                <button class="skill-btn">Valve</button>
+
             </div>
     <button class="open-btn retro-button" onclick="openPopup('popup5')">More Details</button>
         </div>
@@ -932,9 +869,11 @@ Eduvance Mumbai
             <p>The "Summer Industrial Training and Internship Programming in Embedded Systems and IoT" was completed, organized by Eduvance in partnership with the ARM University Program, Cypress Semiconductors University Alliance, and Microchip Technology Inc. This program provided hands-on experience with industry-relevant technologies, starting with foundational C programming and advancing to embedded systems projects. The focus was on ARM's "Mbed" platform and embedded systems programming, offering practical exposure to real-world applications.</p>
                     <div class="skills">
             <div>
-                <button class="skill-btn">HTML</button>
-                <button class="skill-btn">CSS</button>
-                <button class="skill-btn">JavaScript</button>
+                <button class="skill-btn">FRDM-ARM Processor</button>
+                <button class="skill-btn">Mbed</button>
+                <button class="skill-btn">Embedded Systems Design</button>
+                <button class="skill-btn">Internet of Things (IoT)</button>
+
             </div>
     <button class="open-btn retro-button" onclick="openPopup('popup6')">More Details</button>
         </div>
@@ -971,9 +910,12 @@ LinuxWorld Informatics Pvt Ltd Jaipur
             <p>The Winter Industrial Training program focused on enhancing technical skills in IT concepts, with hands-on experience in Linux systems, network fundamentals, and Python. It also covered essential requirements for Red Hat Certified Engineer certification, providing practical exposure to industry-relevant technologies and designed to improve employability..</p>
                     <div class="skills">
             <div>
-                <button class="skill-btn">HTML</button>
-                <button class="skill-btn">CSS</button>
-                <button class="skill-btn">JavaScript</button>
+                <button class="skill-btn">Linux</button>
+                <button class="skill-btn">Shell</button>
+                <button class="skill-btn">Bash</button>
+                <button class="skill-btn">Networking</button>
+                <button class="skill-btn">Python</button>
+
             </div>
     <button class="open-btn retro-button" onclick="openPopup('popup7')">More Details</button>
         </div>
@@ -1063,6 +1005,24 @@ LinuxWorld Informatics Pvt Ltd Jaipur
             <iframe src="img/Forest/mathematics-09-02650-v3.pdf"></iframe>
         </div>
     </div>
+
+
+    <div class="popup" id="popup11">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup('popup11')">Close</button>
+            <iframe src="https://ihimu.wordpress.com/2017/08/05/music-visualizer/"></iframe>
+        </div>
+    </div>
+
+
+
+    <div class="popup" id="popup12">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup('popup12')">Close</button>
+            <iframe src="Website.htm"></iframe>
+        </div>
+    </div>
+
         <!-- Popup -->
     <div class="overlay" id="overlay"></div>
     <div class="popup" id="popup">
@@ -1071,6 +1031,545 @@ LinuxWorld Informatics Pvt Ltd Jaipur
             <iframe src="MBRDI.htm"></iframe>
         </div>
     </div>
+
+
+
+     <button type="button" class="collapsible1">
+        <div class="header">
+    <img src="img/MRPL.jpeg" alt="Company Logo" class="logo">
+    
+    <!-- Wrapper for company name and title -->
+    <div class="company-info">
+        <span class="company-name">
+Mangalore Refinery and Petrochemicals Limited
+, India</span>
+        <span class="terminal-command">Training Intern in 
+Instrumentation and Control Department</span>
+    </div>
+    
+        <span class="duration">Jan 2017 - May 2017</span>
+    </div>
+    </button>
+    <div class="content1">
+        <p>The paper discusses a low-cost approach for detecting and locating potholes using a smartphone and an OBD-II module. It combines vision data, sensor data, and OBD data to identify road abnormalities affecting vehicle safety and ride quality. Two methods—image-triggered and data-triggered—are proposed for recognizing potholes, with results cross-validated between both methods. This approach aims to enhance road maintenance by providing effective monitoring of road conditions. </p>
+
+        <div class="info-button-container">
+            <div class="project-info">
+                <p><strong>Data:</strong> 20-09-2020</p>
+                <p><strong>Duration:</strong> 1 Year</p>
+            </div>
+            <div class="button-container">
+                <a href="#" class="retro-button">Details</a>
+                <a href="#" class="retro-button">GitHub</a>
+            </div>
+        </div>
+    </div>
+
+     <h2 id="pj" class="terminal-section">Project</h2>
+
+<div class="content">
+    <div class="card-section">
+        <!-- Terminal Cards -->
+        <div class="terminal-card">
+            <!-- Card 1 content -->
+            <div class="terminal-header">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+            <div class="terminal-body">
+                <span class="terminal-command">$ Mining Inspection Bot: </span>
+                <img src="img/Mine.png" alt="Project Image">
+                <p>This prototype "Mining Inspection Bot" is designed for real-time monitoring in hazardous underground environments. Equipped with sensors and wireless communication modules (WiFi and Bluetooth), it efficiently collects and transmits data, ensuring reliable operation even in challenging conditions. The bot’s modular design supports scalability, enhancing safety by reducing human exposure to risks in mining.</p>
+                <button class="skill-btn">ESP32</button>
+                <button class="skill-btn">Adafruit-Figureprint</button>
+                <button class="skill-btn">HC-05 Bluetooth</button>
+                <button class="skill-btn">Network Hub</button>
+                <button class="skill-btn">Sensor Hub</button>
+                <button class="skill-btn">Motor-Control</button>
+                <button class="skill-btn">UART</button>
+
+            </div>
+            <div class="info-button-container">
+                <div class="project-info">
+                    <p><strong>Data:</strong> 11-03-2024</p>
+                    <p><strong>Duration:</strong> 1 Months</p>
+                </div>
+                <div class="button-container">
+                   <!-- <a href="#" class="retro-button">Details</a>-->
+                   <!-- <a href="#" class="retro-button">GitHub</a>-->
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Terminal Cards -->
+        <div class="terminal-card">
+            <!-- Card 1 content -->
+            <div class="terminal-header">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+            <div class="terminal-body">
+                <span class="terminal-command">$ Smart Home Automation for Enhanced Security: </span>
+                <img src="img/4639117.png" alt="Project Image">
+                <p>This project focuses on enhancing security and safety in home automation. Utilizing an ESP32 microcontroller, Adafruit fingerprint sensor, RFID, relay modules, and various sensors like DHT11 and MQ2, the system integrates smart features for efficient control. The home automation solution includes a Raspberry Pi for processing, YOLO for object detection, and a custom WiFi library for communication between sensors and actuators. Stateflow logic is employed for device control, ensuring optimal switching based on temperature, humidity, and gas data, complemented by a user-friendly Python GUI interface.</p>
+                <button class="skill-btn">FreeRTOS</button>
+                <button class="skill-btn">socket</button>
+                <button class="skill-btn">Raspberry Pi</button>
+                <button class="skill-btn">Image Processing</button>
+                <button class="skill-btn">I2C</button>
+                <button class="skill-btn">ESP32</button>
+                <button class="skill-btn">Speech-to-Text</button>
+                <button class="skill-btn">UART</button>
+                <button class="skill-btn">SPI</button>
+                <button class="skill-btn">Internet of Things (IoT)</button>
+
+            </div>
+            <div class="info-button-container">
+                <div class="project-info">
+                    <p><strong>Data:</strong> 29-05-2024</p>
+                    <p><strong>Duration:</strong> 2 Months</p>
+                </div>
+                <div class="button-container">
+                 <!--    <a href="#" class="retro-button">Details</a>-->
+                 <!--    <a href="#" class="retro-button">GitHub</a>-->
+                </div>
+            </div>
+        </div>
+
+        <!-- Terminal Cards -->
+        <div class="terminal-card">
+            <!-- Card 1 content -->
+            <div class="terminal-header">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+            <div class="terminal-body">
+                <span class="terminal-command">$ BreadboardScript: High-Level Language for Circuit Design: </span>
+                <img src="img/29572.png" alt="Project Image">
+                <p>This project involves <strong>Logisim</strong> as a <strong>digital circuit simulation tool</strong> to create a <strong>template circuit design</strong> specification for <strong>high-level languages</strong> that can be implemented on <strong>breadboard logic</strong>. I custom-designed a <strong>programming language</strong> using <strong>Python</strong> and the <strong>PLY (Python Lex-Yacc)</strong> library, crafting my own <strong>high-level Arduino-like language</strong>. Additionally, I developed a <strong>compiler</strong> in Python that outputs a <strong>custom circuit diagram</strong> and the corresponding <strong>opcode</strong> to implement the final <strong>digital circuit</strong> on a breadboard.</p>
+
+                <p>The project functions similarly to <strong>Verilog</strong>, but provides higher-level <strong>hardware abstractions</strong> like <strong>RAM, ROM, and registers</strong>, designed to be implemented directly on a breadboard. The <strong>main objective</strong> is to establish a <strong>high-level language framework</strong> that can be translated into <strong>low-level hardware design</strong>, facilitating practical <strong>hardware development</strong> on <strong>IC logic</strong>.</p>
+
+                <button class="skill-btn">Computer Architecture</button>
+                <button class="skill-btn">Digital Circuit Design</button>
+                <button class="skill-btn">Opcode</button>
+                <button class="skill-btn">Compiler-Design</button>
+                <button class="skill-btn">IC Logic</button>
+                <button class="skill-btn">Verilog</button>
+                <button class="skill-btn">Lexical Tokenization</button>
+                <button class="skill-btn">Parsing</button>
+                <button class="skill-btn">Lex/Yacc (PLY)</button>
+
+            </div>
+            <div class="info-button-container">
+                <div class="project-info">
+                    <p><strong>Data:</strong> 30-08-2024</p>
+                    <p><strong>Duration:</strong> 3 Months</p>
+                </div>
+                <div class="button-container">
+                 <!--    <a href="#" class="retro-button">Details</a>-->
+                  <!--    <a href="#" class="retro-button">GitHub</a>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="terminal-card">
+            <!-- Card 1 content -->
+            <div class="terminal-header">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+            <div class="terminal-body">
+                <span class="terminal-command">$ Custom 2D Game Engine in C#: </span>
+                <img src="img/game.png" alt="Project Image">
+                <p>I developed a 2D game development programming language in C# without using any graphic libraries. Instead, I utilized ASCII art to represent each frame of the game, dynamically altering ASCII characters based on in-game actions. I created a fully functional, small-scale programming language around this concept, enabling the development of simple 2D games like Flappy Bird or a basic version of Mario. I custom-designed the syntax for this language, which was my first experience in language design. Remarkably, I didn’t rely on any external libraries for lexing or parsing—all string operations were implemented from scratch in C#.</p>
+                <button class="skill-btn">C#</button>
+                <button class="skill-btn">2D Games Devlopment</button>
+                <button class="skill-btn">Interpreter</button>
+                <button class="skill-btn">Compiler</button>
+                <button class="skill-btn">Syntax Analysis</button>
+
+            </div>
+            <div class="info-button-container">
+                <div class="project-info">
+                    <p><strong>Data:</strong> 07-01-2024</p>
+                    <p><strong>Duration:</strong> 3 Months</p>
+                </div>
+                <div class="button-container">
+                    <!-- <a href="#" class="retro-button">Details</a>-->
+                     <!-- <a href="#" class="retro-button">GitHub</a>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="terminal-card">
+            <!-- Card 2 content -->
+            <div class="terminal-header">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+            <div class="terminal-body">
+                <span class="terminal-command">$ Forest Data Structure: </span>
+                <img src="img/tree.webp" alt="Project Image">
+                    This project introduces a novel approach to representing multi-layer forest data structures using static arrays. By optimizing memory usage and simplifying code, it provides efficient tree operations like insertion, deletion, and search. Applications include interdisciplinary fields such as engineering, medicine, and aviation. For more details, visit the Git page or install via pip: `pip install forest-visualization==0.1.3`.
+                <button class="skill-btn">Data Structure</button>
+                <button class="skill-btn">Tree Forest</button>
+                <button class="skill-btn"> Tree Traversal</button>
+                <button class="skill-btn">Forest Visualization</button>
+                <button class="skill-btn">Computer Algorithm</button>
+
+            </div>
+            <div class="info-button-container">
+                <div class="project-info">
+                    <p><strong>Data:</strong> 27-09-2021</p>
+                    <p><strong>Duration:</strong> 1 Year</p>
+                </div>
+                <div class="button-container">
+                    <a href="https://pypi.org/project/forest-visualization/0.1.3/" target="_blank" class="retro-button">pip</a>
+                    <a href="https://github.com/ganeshb15/forest-visualization" target="_blank" class="retro-button">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="terminal-card">
+            <!-- Card 3 content -->
+            <div class="terminal-header">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+            <div class="terminal-body">
+                <span class="terminal-command">$ Road Condition Monitoring: </span>
+                <img src="img/5385622.png" alt="Project Image">
+                <p>
+                    This project addresses critical road issues in India, where over 50% of accidents are linked to poor road conditions. It focuses on detecting road anomalies like potholes using smartphone accelerometers, measuring acceleration in three dimensions. By integrating this data with real-time vehicle information from On-Board Diagnostics (OBD) systems, the project enables comprehensive analysis of road conditions and driver behavior. Potential applications include enhancing fuel efficiency, monitoring traffic violations, managing fleets, and providing emergency services. 
+                </p>
+                <button class="skill-btn">CI/CD</button>
+                <button class="skill-btn">Travis CI</button>
+                <button class="skill-btn">Code Quality</button>
+                <button class="skill-btn">Python</button>
+                <button class="skill-btn">YOLO</button>
+                <button class="skill-btn">Object Detection</button>
+
+            </div>
+            <div class="info-button-container">
+                <div class="project-info">
+                    <p><strong>Data:</strong> 01-04-2020</p>
+                    <p><strong>Duration:</strong> 4 Month</p>
+                </div>
+                <div class="button-container">
+                    <a href="https://github.com/prithvisekhar/VehicalDiagnosticAlgo" target="_blank" class="retro-button">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="terminal-card">
+            <!-- Card 4 content -->
+            <div class="terminal-header">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+            <div class="terminal-body">
+                <span class="terminal-command">$ MiniReactis: Testing Made Easy: </span>
+                <img src="img/11676391.png" alt="Project Image">
+                <p>
+                    MiniReactis simplifies the testing of embedded control systems during the Software-in-the-Loop (SIL) phase. The tool facilitates the execution of multiple test cases for both MATLAB models and C code, capturing outputs for comprehensive analysis. It generates HTML reports that compare model outputs with code outputs, providing clear insights into differences and code coverage. With its unique features, MiniReactis enhances the efficiency and effectiveness of the testing process, making it an invaluable resource for developers.
+                </p>
+                <button class="skill-btn">Software-in-the-Loop (SIL)-Testing    </button>
+                <button class="skill-btn">Test Cases</button>
+                <button class="skill-btn">Code Coverage</button>
+                <button class="skill-btn">Functional Testing</button>
+                <button class="skill-btn">Automation</button>
+                <button class="skill-btn">Python</button>
+                <button class="skill-btn">gcc</button>
+
+            </div>
+            <div class="info-button-container">
+                <div class="project-info">
+                    <p><strong>Data:</strong> 01-07-2020</p>
+                    <p><strong>Duration:</strong> 1 Month</p>
+                </div>
+                <div class="button-container">
+                    <a href="https://novus-007.github.io/MiniReactisForC/" target="_blank" class="retro-button">Website</a>
+                    <a href="https://github.com/Novus-007/MiniReactisForC/tree/master" target="_blank" class="retro-button">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="terminal-card hidden">
+            <!-- Card 5 content -->
+            <div class="terminal-header">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+            <div class="terminal-body">
+                <span class="terminal-command">$ Music Visualizer: </span>
+                <img src="img/music.png" alt="Project Image">
+                A music visualizer is a device that generates imagery synchronized with the music being played. Popular media players like Windows Media Player and WinAmp feature visually appealing options, yet the classic bar-type music visualizer retains its timeless charm, dating back to the earliest radio sets.
+                    <br>
+                    In our project, we developed a music visualizer using an along-the-filter design, incorporating narrowband filtering techniques alongside FPGA (Field-Programmable Gate Array) technology. This approach allowed us to create dynamic visuals that respond in real-time to the audio signals. The fundamental principle behind the visualizer is that each vertical column reacts to a specific frequency band. While these visualizations primarily serve as eye-catching displays, they also convey valuable insights into the amplitude of various frequency levels, catering to those interested in audio analysis.
+            </div>
+            <div class="info-button-container">
+                <div class="project-info">
+                    <p><strong>Data:</strong> 15-08-2015</p>
+                    <p><strong>Duration:</strong> 1 Month</p>
+                </div>
+                <div class="button-container">
+                    <button class="open-btn retro-button" onclick="openPopup('popup11')">More Details</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="terminal-card">
+            <!-- Card 4 content -->
+            <div class="terminal-header">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+            <div class="terminal-body">
+                <span class="terminal-command">$ BMP Image Processing in C++: </span>
+                <img src="img/29571.png" alt="Project Image">
+                <p>
+                   The BMP Image Processing project involves creating a C++ application that reads a BMP image, processes its pixel data, and generates a new BMP file based on specific conditions. The application is built entirely without using any external libraries or headers, providing a hands-on learning experience in interpreting and utilizing BMP file headers from scratch. It includes a custom header file to manage BMP file structure, read pixel values, and apply a thresholding algorithm that sets pixels above a certain RGB value to white while converting others to black. This approach offers an in-depth understanding of file handling, image processing, and low-level BMP manipulation, serving as a foundation for more advanced image analysis tasks.
+                </p>
+                <button class="skill-btn">C++</button>
+                <button class="skill-btn">C-Header</button>
+                <button class="skill-btn">g++</button>
+                <button class="skill-btn">BMP File Format</button>
+                <button class="skill-btn">Image Processing</button>
+
+
+            </div>
+            <div class="info-button-container">
+                <div class="project-info">
+                    <p><strong>Data:</strong> 05-05-2017</p>
+                    <p><strong>Duration:</strong> 3 Month</p>
+                </div>
+                <div class="button-container">
+                    <a href="https://github.com/ganeshb15/BMP-Image-Processor" target="_blank" class="retro-button">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="terminal-card">
+            <!-- Card 4 content -->
+            <div class="terminal-header">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+            <div class="terminal-body">
+                <span class="terminal-command">$ Modular Audio Processing System Development: </span>
+                <img src="img/Apps-Player-Audio-icon.png" alt="Project Image">
+                <p>
+                   I developed a flexible audio processing system designed to allow for the continuous addition of new features as they are developed. The current implementation includes functionalities for analyzing audio file lengths within directories and automating the download of audio content from external sources. The system is structured for scalability and ease of integration with future audio-related tasks, making it useful for data analysis and training purposes. Feedback and suggestions for improvements are encouraged to enhance its capabilities over time.
+                </p>
+                <button class="skill-btn">Audio Processing</button>
+                <button class="skill-btn">Python</button>
+
+
+            </div>
+            <div class="info-button-container">
+                <div class="project-info">
+                    <p><strong>Duration:</strong> Ongoing</p>
+                </div>
+                <div class="button-container">
+                    <a href="https://github.com/ganeshb15/Audio/tree/master" target="_blank" class="retro-button">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+
+                <div class="terminal-card">
+            <!-- Card 4 content -->
+            <div class="terminal-header">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+            <div class="terminal-body">
+                <span class="terminal-command">$ MATLAB Utility Functions: </span>
+                <img src="img/matlab.svg" alt="Project Image">
+                <p>
+                This collection of MATLAB functions is designed to simplify and automate common tasks, particularly in Simulink environments. These utilities, such as enhanced block path retrieval (ggcb) and automated test case execution with CSV handling, help streamline processes like navigating model hierarchies and validating Software-in-the-Loop (SIL) tests. The library is continually evolving to incorporate new functions as additional needs arise, making it a versatile toolset for various MATLAB and Simulink applications.                </p>
+                <button class="skill-btn">MATLAB</button>
+                <button class="skill-btn">Simulink</button>
+
+            </div>
+            <div class="info-button-container">
+                <div class="project-info">
+                    <p><strong>Duration:</strong> Ongoing</p>
+
+                </div>
+                <div class="button-container">
+                    <a href="https://github.com/ganeshb15/MATLAB-Collection" target="_blank" class="retro-button">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+             <div class="terminal-card">
+            <!-- Card 4 content -->
+            <div class="terminal-header">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+            <div class="terminal-body">
+                <span class="terminal-command">$ Tool Collection: </span>
+                <img src="img/2752488.png" alt="Project Image">
+                <p>
+        Each folder contains a unique tool I've developed as a small contribution to provide simple solutions that I couldn’t find as free resources. These tools are designed for small-scale applications, ranging from automation utilities to specific use cases. For instance, the <strong>'create_srt'</strong> tool generates SRT files by loading timestamps and content through a user-friendly GUI. Another tool converts images into binary or ASCII art with adjustable thresholds, and a third one visualizes a mathematical theory. These are currently small programs, but if they evolve into larger projects, they will be moved to separate repositories.
+    </p>
+                <button class="skill-btn">Python</button>
+                <button class="skill-btn">Image Processing</button>
+                <button class="skill-btn">GUI-Tkinter</button>
+                <button class="skill-btn">SRT</button>
+
+            </div>
+            <div class="info-button-container">
+                <div class="project-info">
+                    <p><strong>Duration:</strong> Ongoing</p>
+
+                </div>
+                <div class="button-container">
+                    <a href="https://github.com/ganeshb15/Tools" target="_blank" class="retro-button">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="terminal-card">
+            <!-- Card 4 content -->
+            <div class="terminal-header">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+            <div class="terminal-body">
+                <span class="terminal-command">$ Web Design: </span>
+                <img src="img/4248142.png" alt="Project Image">
+                <p>
+        I have designed several websites by combining various information patches, sometimes using existing templates or reusing code. In some cases, I’ve incorporated AI tools to enhance the design process. Despite any gaps in formal knowledge, neither the functionality nor the design of these websites has been compromised. Each project was created with a specific purpose in mind. Some serve as portfolios, while others are designed to store useful information or provide easy access to Python scripts that can be quickly executed when needed.
+    </p>
+                <button class="skill-btn">HTML</button>
+                <button class="skill-btn">CSS</button>
+                <button class="skill-btn">javascript</button>
+
+            </div>
+            <div class="info-button-container">
+                <div class="project-info">
+                    <p><strong>Duration:</strong> Ongoing</p>
+
+                </div>
+                <div class="button-container">
+    <button class="open-btn retro-button" onclick="openPopup('popup12')">More Details</button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Add more terminal cards as needed -->
+
+        <!-- Button to show more cards -->
+        <button id="showMore" class="retro-button">Show More</button>
+    </div>
+</div>
+
+    <h2 id="pub" class="terminal-section">Publications</h2>
+
+
+
+ <button type="button" class="collapsible1">
+        <div class="sub">Separation of speech and music using temporal-spectral features and neural classifiers</div>
+        <span style="color: #cccccc;"> Feb 03, 2023&#8226; Springer<br>Omkar.S &#8226;  Anirban .B &#8226; Ganesh.B </span>
+    </button>
+    <div class="content1">
+        <p>The paper explores the separation of speech and music, essential for audio processing. It highlights distinct patterns in their spectrograms, enhanced by Sobel edge kernels and Mel-spectrograms. A dataset from "All India Radio" was created, featuring separate and overlapping audio segments in various languages. Different input features were extracted and fed to classifiers, with convolutional neural networks and MFCC-delta-RNN methods yielding the best accuracy. The method demonstrated consistent performance across Bengali, Punjabi, and Tamil, successfully classifying audio with overlapping speech and music.  </p>
+        <div class="info-button-container">
+            <div class="project-info">
+                <p><strong>Data:</strong> 20-09-2020</p>
+                <p><strong>Duration:</strong> 1 Year</p>
+            </div>
+            <div class="button-container">
+                <a href="#" class="retro-button">Details</a>
+                <a href="#" class="retro-button">GitHub</a>
+            </div>
+        </div>
+    </div>
+
+
+    <button type="button" class="collapsible1">
+        <div class="sub">Novel Static Multi-Layer Forest Approach and Its Applications</div>
+        <span style="color: #cccccc;">Oct 20, 2021 &#8226; MDPI<br>Ganesh.B &#8226; Shristi.K &#8226; Vaishnavi.P &#8226; Adrian Marius.D</span>
+    </button>
+    <div class="content1">
+        <p>The paper discusses a novel method for representing multi-layer forest data structures using static arrays, which improves flexibility and reduces storage space compared to dynamic linked lists. It introduces various tree operations, a unique data compression algorithm, and a migration strategy from traditional to proposed structures. This new approach enhances memory optimization and code complexity, applicable across fields like engineering and medicine. Additionally, it addresses practical applications in Simulink debugging and forest visualization. </p>
+        <div class="info-button-container">
+            <div class="project-info">
+                <p><strong>Data:</strong> 20-09-2020</p>
+                <p><strong>Duration:</strong> 1 Year</p>
+            </div>
+            <div class="button-container">
+                    <button class="open-btn retro-button" onclick="openPopup('popup9')">Details</button>
+                    <button class="open-btn retro-button" onclick="openPopup('popup10')">Paper</button>
+            </div>
+        </div>
+    </div>
+
+
+
+ <button type="button" class="collapsible1">
+        <div class="sub">Rotating Acoustic Reflector Parameter Trade-Off for Near-Outdoor Audio Event Detection</div>
+        <span style="color: #cccccc;"> May 25, 2021&#8226; Springer<br>Ganesh.B &#8226;  Sangeeth .J &#8226; Anirban.B </span>
+    </button>
+    <div class="content1">
+        <p>The paper addresses limitations in current visual surveillance systems, particularly in low-light and non-line-of-sight conditions, proposing an audio surveillance system as a complementary solution. It details the development of a low-cost rotating parabolic reflector microphone designed for outdoor audio recording, optimizing size, speed, sensitivity, and directionality. Enhancements in reflector shape and microphone type improve audio signal capture. The study demonstrates the effectiveness of this audio sensor system for small-scale audio event classification using a hierarchical approach. </p>
+        <div class="info-button-container">
+            <div class="project-info">
+                <p><strong>Data:</strong> 20-09-2020</p>
+                <p><strong>Duration:</strong> 1 Year</p>
+            </div>
+            <div class="button-container">
+                <a href="#" class="retro-button">Details</a>
+                <a href="#" class="retro-button">GitHub</a>
+            </div>
+        </div>
+    </div>
+
+ <button type="button" class="collapsible1">
+        <div class="sub">Trigger-Based Pothole Detection Using Smartphone and OBD-II</div>
+        <span style="color: #cccccc;"> July 04, 2020&#8226; IEEEXplore<br>K.S. Ashwini &#8226;  Ganesh.B &#8226; Thrilochan.S&#8226; Prithvi Sekhar.P </span>
+    </button>
+    <div class="content1">
+        <p>The paper discusses a low-cost approach for detecting and locating potholes using a smartphone and an OBD-II module. It combines vision data, sensor data, and OBD data to identify road abnormalities affecting vehicle safety and ride quality. Two methods—image-triggered and data-triggered—are proposed for recognizing potholes, with results cross-validated between both methods. This approach aims to enhance road maintenance by providing effective monitoring of road conditions. </p>
+        <div class="info-button-container">
+            <div class="project-info">
+                <p><strong>Data:</strong> 20-09-2020</p>
+                <p><strong>Duration:</strong> 1 Year</p>
+            </div>
+            <div class="button-container">
+                <a href="#" class="retro-button">Details</a>
+                <a href="#" class="retro-button">GitHub</a>
+            </div>
+        </div>
+    </div>
+
     <script>
         var coll = document.getElementsByClassName("collapsible1");
         for (let i = 0; i < coll.length; i++) {
@@ -1117,6 +1616,30 @@ LinuxWorld Informatics Pvt Ltd Jaipur
             document.getElementById(popupId).style.display = 'none';
             document.getElementById('overlay').style.display = 'none';
         }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const cards = document.querySelectorAll(".terminal-card");
+    const showMoreButton = document.getElementById("showMore");
+    const initialVisibleCount = 4; // Number of cards to show initially
+
+    // Hide all cards beyond the initial visible count
+    for (let i = initialVisibleCount; i < cards.length; i++) {
+        cards[i].classList.add("hidden");
+    }
+
+    // Add click event to the button
+    showMoreButton.addEventListener("click", function() {
+        // Show all cards
+        for (let card of cards) {
+            card.classList.remove("hidden");
+        }
+        // Hide the button after clicking
+        showMoreButton.style.display = "none";
+    });
+});
+
+
     </script>
     
 </body>
